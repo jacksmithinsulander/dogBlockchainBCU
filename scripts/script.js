@@ -1,56 +1,41 @@
 import Chain from "./chain.js";
 import Block from "./block.js";
 
-const user = document.getElementById("user");
+/* const user = document.getElementById("user");
 const work = document.getElementById("work");
 const saveWorkBtn = document.getElementById("saveWorkBtn");
 const showtimeList = document.getElementById("showTimeList");
 const validateBtn = document.getElementById("validateBtn");
 const editBtn = document.getElementById("editBtn");
-
+ */
 // SKAPA VÅR KEDJA
-let timeSheet = new Chain();
+//let timeSheet = new Chain();
 
 /* validateBtn.addEventListener("click", () => {
     console.log("Börjar validering");
     timeSheet.isChainValid();
 }) */
 
-let doggies;
+var dogs = [];
 
-fetch("https://dog.ceo/api/breeds/list/all")
-
-.then(res => res.json())
-
-.then(dogs => {
-
-    // callback
-
-    setDogs(dogs);
-
+fetch('https://dog.ceo/api/breeds/list/all') 
+.then(response => response.json()) 
+.then(data => { for (var key in data.message) { 
+    dogs.push(key,key); 
+} 
 });
 
-fetch("https://dog.ceo/api/breeds/list/all")
+console.log(dogs);
 
-.then(res => res.json())
+const dropDown = document.createElement("select");
 
-.then(dogs => {
-
-    // callback
-
-    setDogs(dogs);
-
-});
-
-let setDogs = (dogs) => {
-
-    doggies = dogs;
-
-    console.log(doggies.message);
-
+function makeDropDown () {
+    for (i = 0; i < dogs.length; i++) {
+        // skapa option element med rasnamn och appendChild till dropDown
+    }
 }
 
-console
+
 
 /* editBtn.addEventListener("click", () => {
   //  console.log("Im going to edit something!");
@@ -78,7 +63,7 @@ console
     setTimeout(printTimes, 100);
 }) */
 
-function printTimes() {
+/* function printTimes() {
     showtimeList.innerHTML = "";
 
     timeSheet.timeSheet.map(work => {
@@ -102,4 +87,4 @@ function printTimes() {
         
         showtimeList.appendChild(timeBox);
     })
-}
+} */
