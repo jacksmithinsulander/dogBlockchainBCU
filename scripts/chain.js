@@ -7,7 +7,7 @@ export default class Chain {
     }
 
     createGenesisBlock() {
-        return new Time({"user": "Genesis", "work": 0});
+        return new Block({"user": "Genesis", "work": 0});
     }
 
     getLatestTime() {

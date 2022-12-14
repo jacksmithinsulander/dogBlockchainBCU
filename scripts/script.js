@@ -9,58 +9,57 @@ const validateBtn = document.getElementById("validateBtn");
 const editBtn = document.getElementById("editBtn");
 
 // SKAPA VÅR KEDJA
-let timeSheet = new Sheet();
+let timeSheet = new Chain();
 
-validateBtn.addEventListener("click", () => {
+/* validateBtn.addEventListener("click", () => {
     console.log("Börjar validering");
     timeSheet.isChainValid();
-})
+}) */
 
-//FETCH
-export default function printPokemonData(pokemonUrl) {
+let doggies;
 
-    fetch(pokemonUrl)
+fetch("https://dog.ceo/api/breeds/list/all")
 
-    .then(res => res.json())
+.then(res => res.json())
 
-    .then(data => {
+.then(dogs => {
 
-        //console.log("pokemon data", data);
+    // callback
 
-        poke_data.innerHTML = "<h3>" + data.name + "</h3>";
+    setDogs(dogs);
 
-       
+});
 
-        data.moves.map(move => {
+fetch("https://dog.ceo/api/breeds/list/all")
 
-            //console.log("move", move.move)
+.then(res => res.json())
 
-            poke_data.insertAdjacentHTML("beforeend", " - " + move.move.name )
+.then(dogs => {
 
-        });
+    // callback
 
+    setDogs(dogs);
 
+});
 
-        let pokemonImage = document.createElement("img");
+let setDogs = (dogs) => {
 
-        pokemonImage.src = data.sprites.front_default
+    doggies = dogs;
 
-
-
-        poke_data.appendChild(pokemonImage);
-
-    })
+    console.log(doggies.message);
 
 }
 
-editBtn.addEventListener("click", () => {
+console
+
+/* editBtn.addEventListener("click", () => {
   //  console.log("Im going to edit something!");
     timeSheet.timeSheet[2].data.work = 20;
   //  console.log("edited timeSheet", timeSheet);
     printTimes();
-});
+}); */
 
-saveWorkBtn.addEventListener("click", () => {
+/* saveWorkBtn.addEventListener("click", () => {
 
 
         // SKAPA NYTT OBJEKT
@@ -77,7 +76,7 @@ saveWorkBtn.addEventListener("click", () => {
    // console.log("timeSheet", timeSheet);
 
     setTimeout(printTimes, 100);
-})
+}) */
 
 function printTimes() {
     showtimeList.innerHTML = "";
