@@ -1,5 +1,0 @@
-green = #1f3102
-red = #830e10
-beige = #fedfb0
-white = #e9e5e1
-dark = #303a43
