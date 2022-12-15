@@ -4,8 +4,8 @@ import saveNewMember from "./saveNewMember.js";
 import UserList from "./userList.js";
 import User from "./user.js";
 
-    let users = new UserList();
-    console.log("userList", users);
+let users = new UserList();
+console.log("userList", users);
 
 export default function logIn(){
 
@@ -17,44 +17,44 @@ export default function logIn(){
     let headline = document.createElement("h1");
     headline.id = "pupster"; 
     headline.innerText = "PUPSTER";
-    contentLogIn.appendChild(headline);
+    content.appendChild(headline);
 
     //LABEL FÖR USERNAME
     let labelUsername = document.createElement("Label");
     labelUsername.innerText = "Username:";
-    contentLogIn.appendChild(labelUsername);
+    content.appendChild(labelUsername);
 
     //SKAPA LOG IN
     let inputUserName = document.createElement("input");
     inputUserName.id = "inputUserName";
     inputUserName.type = "text";
-    contentLogIn.appendChild(inputUserName);
+    content.appendChild(inputUserName);
 
     //LABEL FÖR PASSWORD
     let labelPassword = document.createElement("Label");
     labelPassword.innerText = "Password:";
-    contentLogIn.appendChild(labelPassword);
+    content.appendChild(labelPassword);
 
     //SKAPAR LOG IN
     let inputPassword = document.createElement("input");
     inputPassword.id = "inputPassword";
     inputPassword.type = "password";
-    contentLogIn.appendChild(inputPassword);
+    content.appendChild(inputPassword);
 
     //LOG IN KNAPP
     let logInBtn = document.createElement("button");
     logInBtn.innerText = "Log in"
     logInBtn.id = "logInBtn";
-    contentLogIn.appendChild(logInBtn);
+    content.appendChild(logInBtn);
 
     //CREATE NEW USER 
     let newMember = document.createElement("button");
     newMember.innerText = "New Member?";
     newMember.id = "newMember";
-    contentLogIn.appendChild(newMember);
+    content.appendChild(newMember);
 
     newMember.addEventListener("click", () =>{
-    contentLogIn.innerHTML = "";
+    content.innerHTML = "";
     saveNewMember();
     })
 
@@ -69,7 +69,7 @@ export default function logIn(){
         if (foundUser && userId){
             localStorage.setItem("userId", userId);
             // console.log("userList", users);
-            contentLogIn.innerHTML = "";
+            content.innerHTML = "";
             blockchain();
         } else {
             alert = "Sorry invalid password";

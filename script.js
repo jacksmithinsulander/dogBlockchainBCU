@@ -4,7 +4,7 @@ import saveNewMember from "./saveNewMember.js";
 import logIn from "./logIn.js";
 import blockchain from "./blockchain.js";
 
-const contentLogIn = document.getElementById("contentLogIn");
+const content = document.getElementById("content");
 
 if (localStorage.getItem("userId")){
     blockchain();

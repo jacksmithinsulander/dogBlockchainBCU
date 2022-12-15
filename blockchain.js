@@ -6,15 +6,15 @@ import User from "./user.js";
     console.log("userList", users);
 
 export default function blockchain(){
-    contentLogIn.innerHTML = "HEJEJ";
+    content.innerHTML = "HEJEJ";
 
     let logOutBtn = document.createElement("button");
     logOutBtn.id = "logOutBtn";
     logOutBtn.innerText = "Log out";
-    contentLogIn.appendChild(logOutBtn);
+    content.appendChild(logOutBtn);
 
     logOutBtn.addEventListener("click", () => {
-        contentLogIn.innerHTML = "";
+        content.innerHTML = "";
         logIn();
         localStorage.removeItem("userId");
     })

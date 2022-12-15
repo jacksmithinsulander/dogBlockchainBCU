@@ -13,38 +13,38 @@ export default function saveNewMember(){
     // LABEL FÖR NYTT USERNAME
     let labelNewUser = document.createElement("Label");
     labelNewUser.innerText = "New username:";
-    contentLogIn.appendChild(labelNewUser);
+    content.appendChild(labelNewUser);
 
     //SKAPAR NY ANVÄNDARE
     let inputCreateUserName = document.createElement("input");
     inputCreateUserName.id = "inputCreateUserName";
     inputCreateUserName.type = "text";
-    contentLogIn.appendChild(inputCreateUserName);
+    content.appendChild(inputCreateUserName);
 
     // LABEL FÖR NYTT LÖSENORD
     let labelNewPassword = document.createElement("Label");
     labelNewPassword.innerText = "New password:";
-    contentLogIn.appendChild(labelNewPassword);
+    content.appendChild(labelNewPassword);
 
     //SKAPAR NYTT LÖSENORD
     let inputCreatePassword = document.createElement("input");
     inputCreatePassword.id = "inputPassword";
     inputCreatePassword.type = "text";
-    contentLogIn.appendChild(inputCreatePassword);
+    content.appendChild(inputCreatePassword);
 
     //SKAPAR CREATE-KNAPP
     let createBtn = document.createElement("button");
     createBtn.innerText = "Save";
     createBtn.id = "createBtn";
-    contentLogIn.appendChild(createBtn);
+    content.appendChild(createBtn);
 
     let closeBtn = document.createElement("button");
     closeBtn.innerText = "Close";
     closeBtn.id = "closeBtn";
-    contentLogIn.appendChild(closeBtn);
+    content.appendChild(closeBtn);
 
     closeBtn.addEventListener("click", () => {
-        contentLogIn.innerHTML = "";
+        content.innerHTML = "";
         logIn();
     })
 
