@@ -64,13 +64,13 @@ export default function logIn(){
         // KOLLA OM FOUNDUSER ÄR TRUE
         // console.log("foundUser", foundUser);
         // console.log("Testa lösenordet: ", foundUser.checkPassword(inputPassword.value));
-        let userId = await foundUser.checkPassword(inputPassword.value);
+        let userId = await foundUser.checkPassword(inputPassword.value); //.checkpassword??
         // console.log("userId", userId);
-        if (foundUser && userId){
+        if (foundUser && userId){ //async?
             localStorage.setItem("userId", userId);
             // console.log("userList", users);
             content.innerHTML = "";
-            blockchain();
+            blockchain(); //bytas ut 
         } else {
             alert = "Sorry invalid password";
         }

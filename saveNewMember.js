@@ -3,8 +3,8 @@ import logIn from "./logIn.js";
 import UserList from "./userList.js";
 import User from "./user.js";
 
-    let users = new UserList();
-    console.log("userList", users);
+let users = new UserList();
+console.log("userList", users);
 
 export default function saveNewMember(){
 
@@ -48,10 +48,8 @@ export default function saveNewMember(){
         logIn();
     })
 
-
     createBtn.addEventListener("click", () => {
         users.addUser(new User(inputCreateUserName.value, inputCreatePassword.value));
-        console.log("users", users);
+        //console.log("users", users);
     })
-
 }

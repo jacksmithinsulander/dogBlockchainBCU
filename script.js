@@ -7,15 +7,14 @@ import blockchain from "./blockchain.js";
 const content = document.getElementById("content");
 
 if (localStorage.getItem("userId")){
-    blockchain();
+    blockchain();// byt ut sen 
 } else{
     logIn();
 }
 
 
 
-
-console.log("KöR logIN")
+//console.log("KöR logIN")
 
 // Koppla js-filerna, lösa LS 
 
