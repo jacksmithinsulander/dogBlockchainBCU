@@ -1,6 +1,8 @@
 import Chain from "./chain.js";
 import Block from "./block.js";
 
+let newBlock = new Chain();
+
 let content = document.getElementById("content");
 
 const chooseDogText = document.createElement("p");
@@ -13,6 +15,9 @@ content.appendChild(dropDown);
 const buyBtn = document.createElement("button");
 content.appendChild(buyBtn);
 buyBtn.innerHTML = "buy dog";
+
+const blockExplorer = document.createElement("div");
+content.appendChild(blockExplorer);
 
 var dogsArray = [];
 
@@ -45,12 +50,29 @@ buyBtn.addEventListener ("click", () => {
     console.log("köp " + dropDown.value);
     (async () => {
         const dogsName = await setDogName()
-    let blockData = { 
-        timeStamp: Math.floor(Date.now() / 1000),
-        dogBreed: dropDown.value,
-        dogName: dogsName
-       // owner: 
-    }
-    console.log(blockData);
+        let blockData = { 
+            timeStamp: Math.floor(Date.now() / 1000),
+            dogBreed: dropDown.value,
+            dogName: dogsName
+            // owner: 
+        }
+        console.log(blockData);
+        newBlock.addTime(new Block(blockData));
+    setTimeout(printChain, 100);
     })();
 });
+
+function printChain() {
+    blockExplorer.innerHTML = ""; 
+    newBlock.timeSheet.map(work => {
+        let timeBox = document.createElement("div");
+        timeBox.style.border = "3px solid magenta";
+        timeBox.style.padding = "20px";
+        timeBox.style.margin = "20px";
+        timeBox.style.backgroundColor = "cyan"
+        timeBox.style.borderRadius = "10px"
+        timeBox.id = work.id;
+        timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
+        blockExplorer.appendChild(timeBox);
+    })
+}
