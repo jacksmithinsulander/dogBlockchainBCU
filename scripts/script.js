@@ -60,11 +60,23 @@ buyBtn.addEventListener ("click", () => {
         }
         console.log(blockData);
         newBlock.addTime(new Block(blockData));
-    setTimeout(printChain, 100);
+    setTimeout(writeBlock, 100);
     })();
 });
 
-function printChain() {
+function writeBlock() {
+    newBlock.timeSheet.map(work => {
+        let blockChain = {
+            prevHash: work.prevHash,
+            dogBreed: work.data.dogBreed,
+            dogName: work.data.dogName,
+            hash: work.hash     
+        }
+        localStorage.setItem(work.nonce, JSON.stringify(blockChain))
+    })
+}
+
+function printBlockChain() {
     blockExplorer.innerHTML = ""; 
     newBlock.timeSheet.map(work => {
         let timeBox = document.createElement("div");
@@ -78,3 +90,4 @@ function printChain() {
         blockExplorer.appendChild(timeBox);
     })
 }
+
