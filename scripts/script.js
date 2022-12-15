@@ -53,7 +53,9 @@ buyBtn.addEventListener ("click", () => {
         let blockData = { 
             timeStamp: Math.floor(Date.now() / 1000),
             dogBreed: dropDown.value,
-            dogName: dogsName
+            dogName: dogsName,
+            dogXP: 0,
+            dogState: "With owner"
             // owner: 
         }
         console.log(blockData);
