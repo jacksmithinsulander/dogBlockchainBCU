@@ -1,6 +1,30 @@
 import Chain from "./chain.js";
 import Block from "./block.js";
 
+const dropDown = document.createElement("select");
+/* dropDown.innerHTML = "<option value='testdog'>testdog</option>"; */
+document.body.appendChild(dropDown);
+
+var dogsArray = [];
+
+fetch('https://dog.ceo/api/breeds/list/all') 
+.then(response => response.json()) 
+.then(data => { for (var key in data.message) 
+    { dogsArray.push({ key: key}); 
+    } 
+});
+
+function makeDropDown() {
+    for (let i = 0; i < dogsArray.length; i++) {
+        dropDown.innerHTML += "<option value='" + dogsArray[i].key + "'>" + dogsArray[i].key + "</option>";
+    }
+}
+
+setTimeout(() => {
+    console.log(dogsArray);
+    makeDropDown();
+}, 100);
+
 /* const user = document.getElementById("user");
 const work = document.getElementById("work");
 const saveWorkBtn = document.getElementById("saveWorkBtn");
@@ -16,7 +40,7 @@ const editBtn = document.getElementById("editBtn");
     timeSheet.isChainValid();
 }) */
 
-var dogs = [ "shiba", "akita", "shitzu" ];
+/* var dogs = [ "shiba", "akita", "shitzu" ]; */
 
 //fetch('https://dog.ceo/api/breeds/list/all') 
 //.then(response => response.json()) 
@@ -27,7 +51,7 @@ var dogs = [ "shiba", "akita", "shitzu" ];
 //}
 //});
 
-function dogArrMaker(handler) {
+/* function dogArrMaker(handler) {
     fetch('https://dog.ceo/api/breeds/list/all')
     .then(res => {return res.json()})
     .then(data => {
@@ -41,22 +65,22 @@ dogArrMaker(dogs);
 
 console.log(dogs);
 
-const dropDown = document.createElement("select"); //.setAttribute("id", "dogDropdown");
+const dropDown = document.createElement("select"); */ //.setAttribute("id", "dogDropdown");
 //dropDown.setAttribute.id = "dropDown";
 //document.body.appendChild(dropDown);
 //dropDown.setAttribute.id = "dropDown";
 
 //dropDown.innerHTML = "<option value='testdog'>testdog </option>";
 
-function makeDropDown() {
+/* function makeDropDown() {
     for (let i = 0; i < dogs.length; i++) {
-        dropDown.innerHTML += "<option value='" + dogs[i] + "'>" + dogs[i] + "</option>"; 
+        dropDown.innerHTML += "<option value='" + dogs[i] + "'>" + dogs[i] + "</option>";  */
         // skapa option element med rasnamn och appendChild till dropDown
-    }
-}
-
+/*     }
+} */
+/* 
 makeDropDown();
-document.body.appendChild(dropDown);
+document.body.appendChild(dropDown); */
 
 /* editBtn.addEventListener("click", () => {
   //  console.log("Im going to edit something!");
