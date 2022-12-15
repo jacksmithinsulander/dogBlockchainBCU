@@ -1,0 +1,128 @@
+body{
+    display: flex;
+    flex-direction: row;
+    background-color: #cccdcf;
+}
+
+#header{
+    background-image: linear-gradient(to bottom right, #424d63, #5e93fd);
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    align-self: flex-start;
+    left: 0;
+    top: 0;
+}
+
+#pupster{
+    color:beige;
+    position: absolute;
+    left: -100px;
+    top: -350px;
+    font-size: 180px;
+    font-family: Squabslab;
+    text-shadow: 0 1px 0 #ccc , 0 2px 0 #ccc , 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc, 0 10px 0 #ccc, 0 11px 0 #ccc, 0 12px 0 #ccc, 0 20px 30px rgba(0,0,0,.5);
+}
+
+#blockchainlink{
+    align-self: flex-start;
+    position: absolute;
+    left: 1230px;
+    top: -10px;
+    color: #ffffff;
+    font-size: 25px;
+}
+
+#blockchainlink:hover{
+    color: #424d63;
+}
+
+h3{
+    position: relative;
+    font-family:  Squabslab;
+    left: -100px;
+    font-size: 40px;
+    top: -40px;
+    color: beige;
+    -moz-transform: rotate(-20deg);
+    text-shadow: 0 1px 0 #ccc , 0 2px 0 #ccc , 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc, 0 10px 0 #ccc, 0 11px 0 #ccc, 0 12px 0 #ccc, 0 20px 30px rgba(0,0,0,.5);
+}
+
+#createNewText{
+    display: none;
+    -moz-transform: rotate(-10deg);
+    top: -10px;
+}
+
+
+#contentLogIn{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 300px;
+    left: 400px;
+    width: 400px;
+}
+
+#logInBtn, #createBtn, #closeBtn{
+    background-image: linear-gradient(to bottom right, #424d63, #5e93fd);
+    font-family: Squabslab;
+    font-size: 20px;
+    padding: 10px;
+    color: beige;
+}
+
+#closeBtn{
+    margin-top: 30px;
+}
+
+#newMember{
+    width: 300px;
+    height: 50px;
+    align-self: center;
+    background-image: linear-gradient(to bottom right, #424d63, #5e93fd);
+    font-family: Squabslab;
+    font-size: 20px;
+    padding: 10px;
+    color: beige;
+    border: 2px solid beige;
+    margin: 50px;
+}
+
+#newMember:hover{
+    color: rgb(3, 25, 41);
+}
+
+#logIn{
+    position: relative;
+    left: 30px;
+}
+
+#inputUserName, #inputPassword, #inputCreateUserName, #inputCreatePassword{
+    margin: 10px;
+}
+
+#dog{
+    position: absolute;
+    width: 550px;
+    left: 600px;
+    top: -380px;
+    z-index: -1;
+}
+
+#imgdog{
+    position: relative;
+    width: 520px;
+    display: none;
+    z-index: -2;
+}
+
+#footer{
+    background-image: linear-gradient(to top left, #424d63, #5e93fd);
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    align-self: flex-end;
+    right: 0;
+    bottom: 0;
+}
