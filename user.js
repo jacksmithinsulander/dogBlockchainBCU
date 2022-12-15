@@ -1,6 +1,5 @@
 import logIn from "./logIn.js";
 
-
 export default class User {
     constructor(name, password) {
         this.name = name;
