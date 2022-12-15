@@ -7,7 +7,7 @@ import blockchain from "./blockchain.js";
 const content = document.getElementById("content");
 
 if (localStorage.getItem("userId")){
-    blockchain();// byt ut sen 
+    blockchain();// byt ut sida/funktion sen 
 } else{
     logIn();
 }
