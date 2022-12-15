@@ -54,28 +54,26 @@ export default function logIn(){
     content.appendChild(newMember);
 
     newMember.addEventListener("click", () =>{
-    content.innerHTML = "";
-    saveNewMember();
+       content.innerHTML = "";
+       saveNewMember();
     })
 
     logInBtn.addEventListener("click", async () => {
 
         let foundUser = users.users.find(user => user.name === inputUserName.value);
-        // KOLLA OM FOUNDUSER ÄR TRUE
+        // Kolla om foundUser är true
         // console.log("foundUser", foundUser);
         // console.log("Testa lösenordet: ", foundUser.checkPassword(inputPassword.value));
         let userId = await foundUser.checkPassword(inputPassword.value); //.checkpassword??
         // console.log("userId", userId);
-        if (foundUser && userId){ //async?
-            localStorage.setItem("userId", userId);
+        //if (foundUser && userId){ //async?
+         localStorage.setItem("userId", userId);
             // console.log("userList", users);
             content.innerHTML = "";
             blockchain(); //bytas ut 
-        } else {
-            alert = "Sorry invalid password";
-        }
-        
+       // } else {
+         //   alert = "Sorry invalid password";
+         
     })
-
 }
 

@@ -1,3 +1,5 @@
+import logIn from "./logIn.js";
+
 export default class User {
     constructor(name, password) {
         this.name = name;
@@ -15,7 +17,7 @@ export default class User {
     }
 
     async savePassword(password) {
-        // SPARA DET ANGIVNA LÖSENORDET FÖR USER I this.password
+        // Spara lösenord för användaren i this.password
         console.log("lösen in", password);
         let hashPass = await this.consumePassword(password);
         console.log("hash pasword", hashPass);
@@ -23,18 +25,19 @@ export default class User {
     }
 
     async checkPassword(password) {
-        // KOLLA OM LÖSENORD STÄMMER NÄR USER LOGGAR IN
+        // Kolla om lösen stämmer vid inlogg
         let testPassword = await this.consumePassword(password)
 
         console.log("testPassword", testPassword);
 
         if (testPassword === this.password) {
             console.log("Rätt lösenord");
+            //alert = "Correct password"
             return this.id;
         } else {
-            console.log("Fel lösenord");
+            //console.log("Fel lösenord");
+            alert = "Sorry invalid password"
             return false;
         }
-    }
-
+    }    
 }
