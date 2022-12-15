@@ -34,49 +34,23 @@ setTimeout(() => {
     makeDropDown();
 }, 500);
 
-function setDogName () {
 
-    fetch('https://namey.muffinlabs.com/name.json')
-
-    .then(response => response.json())
-
-    .then (data => {
-        data = String(data);
-        // console.log(data);
-        return data;
-        // let dogsName = data;
-        // console.log(dogsName);
-        
-    })
-
-    // setTimeout(() => {
-       
-    // }, 500);
-
- }
-
-// function func(url) {
-//     return fetch(url)  // return this promise
-//     .then(response => response.json())
-//     .then(json => (json.results))
-// }
-
-// func('https://namey.muffinlabs.com/name.json')
-// .then(users => console.log(users))  // call `then()` on the returned promise to access users
-// .catch(err => /* handle errors */)
-
-// setDogName();
+async function setDogName() {
+    const res = await fetch('https://namey.muffinlabs.com/name.json')
+    const json = await res.json()
+    return json[0]
+}
 
 buyBtn.addEventListener ("click", () => {
-    console.log("köp" + dropDown.value);
-    setDogName();
+    console.log("köp " + dropDown.value);
+    (async () => {
+        const dogsName = await setDogName()
     let blockData = { 
         timeStamp: Math.floor(Date.now() / 1000),
-        dog: dropDown.value,
-        dogName: setDogName()
+        dogBreed: dropDown.value,
+        dogName: dogsName
        // owner: 
-
     }
     console.log(blockData);
-
+    })();
 });
