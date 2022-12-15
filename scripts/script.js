@@ -1,14 +1,17 @@
 import Chain from "./chain.js";
 import Block from "./block.js";
+
+let content = document.getElementById("content");
+
 const chooseDogText = document.createElement("p");
-document.body.appendChild(chooseDogText);
+content.appendChild(chooseDogText);
 chooseDogText.innerHTML = "Choose your";
 
 const dropDown = document.createElement("select");
-document.body.appendChild(dropDown);
+content.appendChild(dropDown);
 
 const buyBtn = document.createElement("button");
-document.body.appendChild(buyBtn);
+content.appendChild(buyBtn);
 buyBtn.innerHTML = "buy dog";
 
 var dogsArray = [];
@@ -29,4 +32,14 @@ function makeDropDown() {
 setTimeout(() => {
     console.log(dogsArray);
     makeDropDown();
-}, 100);
+}, 500);
+
+buyBtn.addEventListener ("click", () => {
+    console.log("köp" + dropDown.value);
+    let blockData = { 
+       dog: dropDown.value,
+       timeStamp: Math.floor(Date.now() / 1000)
+       // owner: 
+    }
+    console.log(blockData);
+});
