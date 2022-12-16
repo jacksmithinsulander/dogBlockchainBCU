@@ -1,6 +1,10 @@
 //generell kommentar, tror det lättaste är att göra fixarna nerifrån och upp ist för uppifrån och ner, så börja med fixen närmast botten isf
 
-import Chain from "./chain.js";
+import blockchain from "./blockchain.js";
+
+blockchain();
+
+/* import Chain from "./chain.js";
 import Block from "./block.js";
 
 let newBlock = new Chain();
@@ -111,3 +115,4 @@ function printBlockChain() {
     })
 }
 
+ */
