@@ -65,13 +65,16 @@ export default function logIn(){
         // console.log("foundUser", foundUser);
         //console.log("Testa lösenordet: ", foundUser.checkPassword(inputPassword.value));
         let userId = await foundUser.checkPassword(inputPassword.value); //.checkpassword??
+        localStorage.setItem("userId", userId);
         // console.log("userId", userId);
         //if (foundUser && userId){ //async?
+        content.innerHTML = "";
+        blockchain();//bytas ut 
+        //}
          
             // console.log("userList", users);
-            content.innerHTML = "";
-            foundUser.blockchain(); //bytas ut 
-            localStorage.setItem("userId", userId);
+         
+        
        // } else {
          //   alert = "Sorry invalid password";
          
