@@ -3,7 +3,7 @@ import User from "./user.js";
 import saveNewMember from "./saveNewMember.js";
 import logIn from "./logIn.js";
 import blockchainView from "./blockchainView.js";
-//import blockchain from "./blockchain.js";
+import blockchain from "./blockchain.js";
 
 const content = document.getElementById("content");
 
@@ -20,7 +20,7 @@ else {
 
 if (localStorage.getItem("userId")){
     blockchainView();// byt ut sida/funktion sen 
-    //blockchain();
+    blockchain();
 } else{
     logIn();
 }
@@ -30,9 +30,5 @@ if (localStorage.getItem("userId")){
 //console.log("KöR logIN")
 
 // Koppla js-filerna, lösa LS 
-
-
-   
-
 
 
