@@ -3,6 +3,7 @@ import pug from "./pictures.js";
 import saveNewMember from "./saveNewMember.js";
 import UserList from "./userList.js";
 import User from "./user.js";
+import blockchain from "./blockchain.js";
 
 /* let users = new UserList();
 console.log("userList", users); */
@@ -74,6 +75,7 @@ export default function logIn(){
         //if (foundUser && userId){ //async?
         content.innerHTML = "";
         blockchainView();//bytas ut 
+        blockchain();
         //}
             // console.log("userList", users);
        // } else {
