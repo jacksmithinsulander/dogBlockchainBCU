@@ -1,7 +1,14 @@
+//generell kommentar, tror det lättaste är att göra fixarna nerifrån och upp ist för uppifrån och ner, så börja med fixen närmast botten isf
+
 import Chain from "./chain.js";
 import Block from "./block.js";
 
 let newBlock = new Chain();
+
+// Gör en if else funktion som kollar ifall en blockkedja finns i LS eller ej, om den finns så laddain den förexisterande, 
+// annars så kan den göra så som den gör nu (alltså printar genesisblock). Försök även baka in i denna funktionen
+// en variabel som börjar på 1 och varje gång ett block adderas  så ++ar den. Tänker att denna aggerar som blockidentifierare i kedjan
+// Så om blockkedjan finns i ls så ska denna siffra också läsas ifrån LS. 
 
 let content = document.getElementById("content");
 
@@ -46,6 +53,10 @@ async function setDogName() {
     return json[0]
 }
 
+//När vi gör blocket så kan vi även använda detta api: https://dog.ceo/api/breed/HUNDRAS/images/random (exempel: https://dog.ceo/api/breed/akita/images/random)
+// för att även lägga till en url till en random bild i själva blocket som vi kan använda för att rendera i bild på hunden i t.ex. explorern eller ens 
+// dogwallet (som absolut är något vi borde lägga till!
+
 buyBtn.addEventListener ("click", () => {
     console.log("köp " + dropDown.value);
     (async () => {
@@ -64,6 +75,10 @@ buyBtn.addEventListener ("click", () => {
     })();
 });
 
+
+//  I funktionen writeBlock så kommer för varje adderat block hela blockkedjan adderas som ett nytt objekt(tror jag, testa detta), så  
+// fixa till funktionen så att den "clearar" de delarna som ej ska läggas till igen
+
 function writeBlock() {
     newBlock.timeSheet.map(work => {
         let blockChain = {
@@ -75,6 +90,11 @@ function writeBlock() {
         localStorage.setItem(work.nonce, JSON.stringify(blockChain))
     })
 }
+
+
+//I och med att jag ändrade  här ovanför igår (funktionen write block) så att vi får ett ganska korrekt objekt i ls (vi får väll 
+// fixa till det objektet med så vi får in all info som vi vill ha sen, hehe) så får vi göra om brint chain funktionen. 
+// Gör om den så att den istället för att bygga ihop det printade blocket som den gör manuellt nu, så läser den det från blockkedjan från ls. 
 
 function printBlockChain() {
     blockExplorer.innerHTML = ""; 
