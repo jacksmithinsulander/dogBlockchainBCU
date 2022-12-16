@@ -4,10 +4,12 @@ import saveNewMember from "./saveNewMember.js";
 import UserList from "./userList.js";
 import User from "./user.js";
 
-let users = new UserList();
-console.log("userList", users);
+
 
 export default function logIn(){
+
+    let users = new UserList();
+    console.log("userList", users);
 
     // <h3>LOG IN</h3> 
     // <h3 id="createNewText">CREATE NEW</h3>
