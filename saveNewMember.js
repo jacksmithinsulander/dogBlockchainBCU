@@ -3,9 +3,9 @@ import logIn from "./logIn.js";
 import UserList from "./userList.js";
 import User from "./user.js";
 
-let users = new UserList();
+/* let users = new UserList();
 console.log("userList", users);
-
+ */
 export default function saveNewMember(){
 
     pug();
@@ -49,7 +49,11 @@ export default function saveNewMember(){
     })
 
     createBtn.addEventListener("click", () => {
+        let users = new UserList (JSON.parse(localStorage.getItem("users")));
+        console.log(users);
         users.addUser(new User(inputCreateUserName.value, inputCreatePassword.value));
+        localStorage.setItem("users", JSON.stringify(users));    
+        console.log("user added to LS");  
         //console.log("users", users);
     })
 }

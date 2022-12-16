@@ -5,6 +5,7 @@ export default class UserList {
 
     addUser(user) {
         this.users.push(user);
+        //user.addToLs();
     }
 
 }

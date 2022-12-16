@@ -4,12 +4,10 @@ import saveNewMember from "./saveNewMember.js";
 import UserList from "./userList.js";
 import User from "./user.js";
 
-
+/* let users = new UserList();
+console.log("userList", users); */
 
 export default function logIn(){
-
-    let users = new UserList();
-    console.log("userList", users);
 
     // <h3>LOG IN</h3> 
     // <h3 id="createNewText">CREATE NEW</h3>
@@ -62,7 +60,11 @@ export default function logIn(){
 
     logInBtn.addEventListener("click", async () => {
 
-        let foundUser = users.users.find(user => user.name === inputUserName.value);
+        let users = JSON.parse(localStorage.getItem("users"));
+        console.log(users);
+        let foundUser = new User (users.users.find(user => user.name === inputUserName.value));
+        //localStorage.setItem("users", JSON.stringify(users));   
+
         // Kolla om foundUser är true
         // console.log("foundUser", foundUser);
         //console.log("Testa lösenordet: ", foundUser.checkPassword(inputPassword.value));
@@ -73,10 +75,7 @@ export default function logIn(){
         content.innerHTML = "";
         blockchain();//bytas ut 
         //}
-         
             // console.log("userList", users);
-         
-        
        // } else {
          //   alert = "Sorry invalid password";
          

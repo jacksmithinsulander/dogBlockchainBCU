@@ -7,6 +7,13 @@ export default class User {
         this.id = self.crypto.randomUUID();
     }
 
+    /* addToLs() {
+        let users = localStorage.getItem(JSON.parse("users"));
+        users.push(this); 
+        localStorage.setItem("users", JSON.stringify(users));    
+        console.log("user added to LS");   
+    } */
+
    async consumePassword(password) {
         let msgInt8 = new TextEncoder().encode(password+"salt1234salt");
         let hashBuffer = await crypto.subtle.digest("SHA-256", msgInt8);
