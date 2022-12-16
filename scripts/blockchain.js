@@ -1,26 +1,8 @@
 import Chain from "./chain.js";
 import Block from "./block.js";
-import logIn from "./logIn.js";
-import UserList from "./userList.js";
-import User from "./user.js";
 
 
 export default function blockchain () {
-
-    content.innerHTML = "HEJEJ";
-
-    let logOutBtn = document.createElement("button"); //logout btn kvar
-    logOutBtn.id = "logOutBtn";
-    logOutBtn.innerText = "Log out";
-    content.appendChild(logOutBtn);
-
-    logOutBtn.addEventListener("click", () => {
-        content.innerHTML = "";
-        logIn();
-        localStorage.removeItem("userId");
-    })
-
-
 
     let newBlock = new Chain();
 
