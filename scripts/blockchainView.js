@@ -5,7 +5,7 @@ import User from "./user.js";
 let users = new UserList();
 console.log("userList", users);
 
-export default function blockchain(){  //blockchain() bytas mot ...
+export default function blockchainView(){  //blockchain() bytas mot ...
     content.innerHTML = "HEJEJ";
 
     let logOutBtn = document.createElement("button"); //logout btn kvar
