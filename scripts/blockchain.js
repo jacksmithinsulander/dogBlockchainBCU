@@ -57,7 +57,7 @@ export default function blockchain () {
     //När vi gör blocket så kan vi även använda detta api: https://dog.ceo/api/breed/HUNDRAS/images/random (exempel: https://dog.ceo/api/breed/akita/images/random)
     // för att även lägga till en url till en random bild i själva blocket som vi kan använda för att rendera i bild på hunden i t.ex. explorern eller ens 
     // dogwallet (som absolut är något vi borde lägga till!
-
+ 
     buyBtn.addEventListener ("click", () => {
         console.log("köp " + dropDown.value);
         (async () => {
@@ -73,6 +73,7 @@ export default function blockchain () {
             console.log(blockData);
             newBlock.addTime(new Block(blockData));
         setTimeout(writeBlock, 100);
+        printBlockChain();
         })();
     });
 
@@ -80,16 +81,26 @@ export default function blockchain () {
     //  I funktionen writeBlock så kommer för varje adderat block hela blockkedjan adderas som ett nytt objekt(tror jag, testa detta), så  
     // fixa till funktionen så att den "clearar" de delarna som ej ska läggas till igen
 
+    let blockArray = [];
+
+    let blockNum = 0;
+
     function writeBlock() {
         newBlock.timeSheet.map(work => {
-            let blockChain = {
+            let blockChain = { 
                 prevHash: work.prevHash,
                 dogBreed: work.data.dogBreed,
                 dogName: work.data.dogName,
-                hash: work.hash     
+                dogState: work.data.dogState, 
+                dogXP: work.data.dogXP,
+                //dogImage:
+                hash: work.hash
             }
-            localStorage.setItem(work.nonce, JSON.stringify(blockChain))
+            blockArray.push(blockChain);
+            console.log(blockArray.length);
+            localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         })
+    blockNum++;
     }
 
 
@@ -99,16 +110,19 @@ export default function blockchain () {
 
     function printBlockChain() {
         blockExplorer.innerHTML = ""; 
-        newBlock.timeSheet.map(work => {
-            let timeBox = document.createElement("div");
-            timeBox.style.border = "3px solid magenta";
-            timeBox.style.padding = "20px";
-            timeBox.style.margin = "20px";
-            timeBox.style.backgroundColor = "cyan"
-            timeBox.style.borderRadius = "10px"
-            timeBox.id = work.id;
-            timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
-            blockExplorer.appendChild(timeBox);
-        })
+        //for (block in blockArray) {
+            newBlock.timeSheet.map(work => {
+                let timeBox = document.createElement("div");
+                timeBox.style.border = "3px solid magenta";
+                timeBox.style.padding = "20px";
+                timeBox.style.margin = "20px";
+                timeBox.style.backgroundColor = "cyan"
+                timeBox.style.borderRadius = "10px"
+                timeBox.id = work.id;
+                timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
+                //timeBox.innerHTML = "<p>" + blockArray[block] + "</p>";
+                blockExplorer.appendChild(timeBox);
+            })
+        //}
     }
 }
