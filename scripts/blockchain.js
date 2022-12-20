@@ -95,11 +95,13 @@ export default function blockchain () {
         (async () => {
             const dogsName = await setDogName()
             let blockData = { 
+                prevHash: Block.prevHash, 
                 timeStamp: Math.floor(Date.now() / 1000),
                 dogBreed: dropDown.value,
                 dogName: dogsName,
                 dogXP: 0,
-                dogState: "With owner"
+                dogState: "With owner",
+                hash: Block.hash
                 // owner: 
             }
             console.log(blockData);
@@ -107,7 +109,7 @@ export default function blockchain () {
             blockArray.addTime(new Block(blockData));
             
         /* setTimeout(writeBlock, 100); */
-        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockData))
+        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         printBlockChain();
         })();
  }
