@@ -22,6 +22,7 @@ export default function logIn(){
 
     //LABEL FÖR USERNAME
     let labelUsername = document.createElement("Label");
+    labelUsername.id = "labelUsername";
     labelUsername.innerText = "Username:";
     content.appendChild(labelUsername);
 
@@ -33,6 +34,7 @@ export default function logIn(){
 
     //LABEL FÖR PASSWORD
     let labelPassword = document.createElement("Label");
+    labelPassword.id = "labelPassword";
     labelPassword.innerText = "Password:";
     content.appendChild(labelPassword);
 

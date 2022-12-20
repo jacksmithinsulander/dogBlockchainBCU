@@ -9,18 +9,26 @@ export default function blockchain () {
 
     let content = document.getElementById("content");
 
+    // let blockContent = document.createElement("div");
+    // blockContent.id = "blockContent";
+    // document.body.appendChild(blockContent);
+
     const chooseDogText = document.createElement("p");
     content.appendChild(chooseDogText);
-    chooseDogText.innerHTML = "Choose your";
+    chooseDogText.id = "chooseDogText"
+    chooseDogText.innerHTML = "Choose your dog";
 
     const dropDown = document.createElement("select");
+    dropDown.id = "dropDown"
     content.appendChild(dropDown);
 
     const buyBtn = document.createElement("button");
+    buyBtn.id = "buyBtn";
     content.appendChild(buyBtn);
-    buyBtn.innerHTML = "buy dog";
+    buyBtn.innerHTML = "Buy dog";
 
     const blockExplorer = document.createElement("div");
+    blockExplorer.id = "blockExplorer";
     content.appendChild(blockExplorer);
 
     var dogsArray = [];
@@ -60,7 +68,7 @@ export default function blockchain () {
     }
 
     async function setDogImg(choosenDogBreed) {
-        let baseURL = "https://dog.ceo/api/breed/";
+        let baseURL = "https://dog.ceo/api/breed/"; 
         let URLEnding = "/images/random";
         const urlResponse = await fetch(baseURL.concat(choosenDogBreed, URLEnding))
         const urlJSON = await urlResponse.json()
@@ -99,6 +107,7 @@ export default function blockchain () {
                 timeBox.style.backgroundColor = "cyan"
                 timeBox.style.borderRadius = "10px"
                 timeBox.id = work.id;
+                timeBox.id = "blockBoxar"
                 if (work.data.dogName === "Genesis"){
                     timeBox.innerHTML = "<p> Genesis block </p>"
                 }else {
