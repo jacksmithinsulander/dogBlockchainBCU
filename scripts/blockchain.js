@@ -33,36 +33,12 @@ export default function blockchain () {
         localStorage.setItem('blockchainObjectArr', JSON.stringify(blockArray));
         printBlockChain();
         console.log('ls has been created');
-        //console.log(blockArray);
     } else {
         console.log('ls is updating');
-
-
-        //blockArray.timeSheet.shift(); // array is empty
-        
-        // var blockArray = new Chain();
-        // setTimeout(console.log(blockArray.timeSheet[0].hash), 200);
         var blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
-        // async function createArray() {
-        //     for (let i = 1; i < gottenArray.timeSheet.length; i++) {
-        //         let prevHash = await blockArray.timeSheet[i-1].hash;
-        //         gottenArray.timeSheet[i] = new Block(gottenArray.timeSheet[i].data);
-        //         gottenArray.timeSheet[i].prevHash = prevHash;
-        //         await blockArray.addTime(gottenArray.timeSheet[i]);
-        //         console.log(blockArray);
-        //     }
-            /* printBlockChain(); */
-        //     buyDog();
-        // }
-        // createArray();
         printBlockChain();
         console.log('ls has been updated');
-
-        
     } 
-    //console.log(blockArray);
-
-
 
     fetch('https://dog.ceo/api/breeds/list/all') 
     .then(response => response.json()) 
@@ -96,76 +72,23 @@ export default function blockchain () {
     console.log("köp " + dropDown.value);
         (async () => {
             const dogsName = await setDogName()
-            blockArray.timeSheet.map(work => {
-            let blockData = { 
-                prevHash: work.prevHash, 
-                timeStamp: Math.floor(Date.now() / 1000),
-                dogBreed: dropDown.value,
-                dogName: dogsName,
-                dogXP: 0,
-                dogState: "With owner",
-                hash: work.hash
-                // owner: 
-            }
-            console.log(blockData);
-            console.log(blockArray)
-            blockArray.addTime(new Block(blockData));
-            
-        /* setTimeout(writeBlock, 100); */
-        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
-        printBlockChain();
-            })
-        })();
- }
-    buyBtn.addEventListener ("click", () => {
-        /* console.log("köp " + dropDown.value);
-        (async () => {
-            const dogsName = await setDogName()
             let blockData = { 
                 timeStamp: Math.floor(Date.now() / 1000),
                 dogBreed: dropDown.value,
                 dogName: dogsName,
                 dogXP: 0,
                 dogState: "With owner"
-                // owner: 
             }
             console.log(blockData);
-            console.log(blockArray)
-            blockArray.addTime(new Block(blockData));
-            
-        setTimeout(writeBlock, 100);
+            console.log(blockArray);
+            blockArray.timeSheet.push(new Block(blockData));
+        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         printBlockChain();
-        })(); */
+        })();
+ }
+    buyBtn.addEventListener ("click", () => {
         buyDog();
     }); 
-
-
-    //  I funktionen writeBlock så kommer för varje adderat block hela blockkedjan adderas som ett nytt objekt(tror jag, testa detta), så  
-    // fixa till funktionen så att den "clearar" de delarna som ej ska läggas till igen
-
-    // let blockArray = [];
-
-/*     let blockNum = 0;
-
-    function writeBlock() {
-        blockArray.timeSheet.map(work => {
-            let blockChain = { 
-                prevHash: work.prevHash,
-                dogBreed: work.data.dogBreed,
-                dogName: work.data.dogName,
-                dogState: work.data.dogState, 
-                dogXP: work.dogXP,
-                //dogImage:
-                hash: work.hash
-            }
-            //blockArray.timeSheet.push(blockChain); // maybe here
-            // console.log(blockArray.length);
-            //localStorage.clear("blockchainObjectArr");
-            localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
-        })
-    blockNum++;
-    } */
-
 
     //I och med att jag ändrade  här ovanför igår (funktionen write block) så att vi får ett ganska korrekt objekt i ls (vi får väll 
     // fixa till det objektet med så vi får in all info som vi vill ha sen, hehe) så får vi göra om brint chain funktionen. 
