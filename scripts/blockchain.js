@@ -51,7 +51,8 @@ export default function blockchain () {
                 await blockArray.addTime(gottenArray.timeSheet[i]);
                 console.log(blockArray);
             }
-            printBlockChain();
+            /* printBlockChain(); */
+            buyDog();
         }
         createArray();
         console.log('ls has been updated');
@@ -89,9 +90,29 @@ export default function blockchain () {
     //När vi gör blocket så kan vi även använda detta api: https://dog.ceo/api/breed/HUNDRAS/images/random (exempel: https://dog.ceo/api/breed/akita/images/random)
     // för att även lägga till en url till en random bild i själva blocket som vi kan använda för att rendera i bild på hunden i t.ex. explorern eller ens 
     // dogwallet (som absolut är något vi borde lägga till!
- 
+ function buyDog() { 
+    console.log("köp " + dropDown.value);
+        (async () => {
+            const dogsName = await setDogName()
+            let blockData = { 
+                timeStamp: Math.floor(Date.now() / 1000),
+                dogBreed: dropDown.value,
+                dogName: dogsName,
+                dogXP: 0,
+                dogState: "With owner"
+                // owner: 
+            }
+            console.log(blockData);
+            console.log(blockArray)
+            blockArray.addTime(new Block(blockData));
+            
+        /* setTimeout(writeBlock, 100); */
+        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockData))
+        printBlockChain();
+        })();
+ }
     buyBtn.addEventListener ("click", () => {
-        console.log("köp " + dropDown.value);
+        /* console.log("köp " + dropDown.value);
         (async () => {
             const dogsName = await setDogName()
             let blockData = { 
@@ -108,8 +129,9 @@ export default function blockchain () {
             
         setTimeout(writeBlock, 100);
         printBlockChain();
-        })();
-    });
+        })(); */
+        buyDog();
+    }); 
 
 
     //  I funktionen writeBlock så kommer för varje adderat block hela blockkedjan adderas som ett nytt objekt(tror jag, testa detta), så  
@@ -117,7 +139,7 @@ export default function blockchain () {
 
     // let blockArray = [];
 
-    let blockNum = 0;
+/*     let blockNum = 0;
 
     function writeBlock() {
         blockArray.timeSheet.map(work => {
@@ -136,7 +158,7 @@ export default function blockchain () {
             localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         })
     blockNum++;
-    }
+    } */
 
 
     //I och med att jag ändrade  här ovanför igår (funktionen write block) så att vi får ett ganska korrekt objekt i ls (vi får väll 
