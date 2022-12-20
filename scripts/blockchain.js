@@ -108,7 +108,7 @@ export default function blockchain () {
                 timeBox.style.backgroundColor = "cyan"
                 timeBox.style.borderRadius = "10px"
                 timeBox.id = work.id;
-                timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
+                timeBox.innerHTML = "<p> Previous Hash: " + work.prevHash + "<br/> Dogbreed: " + work.data.dogBreed + "<br/> Dogs Name: " + work.data.dogName + "<br> Dogs XP: " + work.data.dogXP + "<br> Dog is: " + work.data.dogState + "<br> Timestamp: " + work.data.timeStamp  + "<br/> Hash: " + work.hash + "</p>"
                 //timeBox.innerHTML = "<p>" + blockArray[block] + "</p>";
                 blockExplorer.appendChild(timeBox);
             })
