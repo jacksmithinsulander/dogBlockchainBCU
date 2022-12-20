@@ -15,6 +15,7 @@ export default class Chain {
     getLatestTime() {
         // HÄMTA FÖREGÅENDE TID
         return this.timeSheet[this.timeSheet.length -1];
+        
     }
 
     async addTime(newTime) {

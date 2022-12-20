@@ -91,8 +91,8 @@ export default function blockchain () {
 
             localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
 
-            blockArray.addTime(new Block(blockData));
-        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+            //blockArray.addTime(new Block(blockData));
+            //localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
 
         printBlockChain();
         })();
@@ -120,7 +120,7 @@ export default function blockchain () {
                 timeBox.style.backgroundColor = "cyan"
                 timeBox.style.borderRadius = "10px"
 
-                timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
+                //timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
 
                 timeBox.id = work.id;
 

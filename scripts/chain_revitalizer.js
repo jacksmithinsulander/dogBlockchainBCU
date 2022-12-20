@@ -19,13 +19,14 @@ export default class chainGet {
 
     getLatestTime() {
         // HÄMTA FÖREGÅENDE TID
-        return this.timeSheet[this.timeSheet.length -1];
+        return this.timeSheet[this.timeSheet.length - 1];
     }
 
     async addTime(newTime) {
         // FÅNGA OCH PUSHA IN NYA TIDER
         // SPARA ÄVEN TIDIGARE HASH
         newTime.prevHash = this.getLatestTime().hash;
+        console.log(this.getLatestTime().hash);
         // MAJNA
         newTime.mineBlock(this.difficulty);
         // HASHA
