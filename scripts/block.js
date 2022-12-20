@@ -1,5 +1,5 @@
 export default class Block {
-    constructor(data, index = 0, prevHash = "") {
+    constructor(data, index = 0, prevHash = "1") {
         this.index = index;
         this.data = data;
         this.timestamp = Date.now();

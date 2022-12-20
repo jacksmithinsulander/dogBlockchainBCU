@@ -28,19 +28,33 @@ export default function blockchain () {
 
     var dogsArray = [];
 
-    if(!localStorage.getItem('blockchainObjectArr')){
+    if(!(localStorage.getItem('blockchainObjectArr'))){
         var blockArray = new Chain();
         localStorage.setItem('blockchainObjectArr', JSON.stringify(blockArray));
         printBlockChain();
+        console.log('ls has been created');
         //console.log(blockArray);
-    } else if (localStorage.getItem('blockchainObjectArr')){
+    } else {
+        console.log('ls is updating');
+
+
+        //blockArray.timeSheet.shift(); // array is empty
+        
         var blockArray = new Chain();
-        blockArray.timeSheet.shift();
+        setTimeout(console.log(blockArray.timeSheet[0].hash), 200);
         var gottenArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
-        blockArray.timeSheet = gottenArray;
-        console.log(gottenArray, blockArray.timeSheet);
-        console.log(blockArray);
-        printBlockChain();
+        async function createArray() {
+            for (let i = 1; i < gottenArray.timeSheet.length; i++) {
+                let prevHash = await blockArray.timeSheet[i-1].hash;
+                gottenArray.timeSheet[i] = new Block(gottenArray.timeSheet[i].data);
+                gottenArray.timeSheet[i].prevHash = prevHash;
+                await blockArray.addTime(gottenArray.timeSheet[i]);
+                console.log(blockArray);
+            }
+            printBlockChain();
+        }
+        createArray();
+        console.log('ls has been updated');
         
     } 
     //console.log(blockArray);
@@ -129,10 +143,12 @@ export default function blockchain () {
     // fixa till det objektet med så vi får in all info som vi vill ha sen, hehe) så får vi göra om brint chain funktionen. 
     // Gör om den så att den istället för att bygga ihop det printade blocket som den gör manuellt nu, så läser den det från blockkedjan från ls. 
 
-    function printBlockChain() {
+    async function printBlockChain() {
+        console.log("printing chain");
         blockExplorer.innerHTML = ""; 
         //for (block in blockArray) {
             blockArray.timeSheet.map(work => {
+                setTimeout(console.log("print new"), 1000)
                 console.log(work);
                 let timeBox = document.createElement("div");
                 timeBox.style.border = "3px solid magenta";
