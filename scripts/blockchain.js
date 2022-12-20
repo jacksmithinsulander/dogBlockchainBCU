@@ -11,6 +11,16 @@ export default function blockchain () {
     // en variabel som börjar på 1 och varje gång ett block adderas  så ++ar den. Tänker att denna aggerar som blockidentifierare i kedjan
     // Så om blockkedjan finns i ls så ska denna siffra också läsas ifrån LS. 
 
+    if(!localStorage.getItem('blockchainObjectArr')){
+        var blockArray = [];
+        console.log(blockArray);
+    } else if (localStorage.getItem('blockchainObjectArr')){
+        var blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
+        console.log(blockArray);
+        
+    } 
+
+
     let content = document.getElementById("content");
 
     const chooseDogText = document.createElement("p");
@@ -81,7 +91,7 @@ export default function blockchain () {
     //  I funktionen writeBlock så kommer för varje adderat block hela blockkedjan adderas som ett nytt objekt(tror jag, testa detta), så  
     // fixa till funktionen så att den "clearar" de delarna som ej ska läggas till igen
 
-    let blockArray = [];
+    // let blockArray = [];
 
     let blockNum = 0;
 
@@ -97,7 +107,8 @@ export default function blockchain () {
                 hash: work.hash
             }
             blockArray.push(blockChain);
-            console.log(blockArray.length);
+            // console.log(blockArray.length);
+            localStorage.clear("blockchainObjectArr");
             localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         })
     blockNum++;
