@@ -40,22 +40,24 @@ export default function blockchain () {
 
         //blockArray.timeSheet.shift(); // array is empty
         
-        var blockArray = new Chain();
-        setTimeout(console.log(blockArray.timeSheet[0].hash), 200);
-        var gottenArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
-        async function createArray() {
-            for (let i = 1; i < gottenArray.timeSheet.length; i++) {
-                let prevHash = await blockArray.timeSheet[i-1].hash;
-                gottenArray.timeSheet[i] = new Block(gottenArray.timeSheet[i].data);
-                gottenArray.timeSheet[i].prevHash = prevHash;
-                await blockArray.addTime(gottenArray.timeSheet[i]);
-                console.log(blockArray);
-            }
+        // var blockArray = new Chain();
+        // setTimeout(console.log(blockArray.timeSheet[0].hash), 200);
+        var blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
+        // async function createArray() {
+        //     for (let i = 1; i < gottenArray.timeSheet.length; i++) {
+        //         let prevHash = await blockArray.timeSheet[i-1].hash;
+        //         gottenArray.timeSheet[i] = new Block(gottenArray.timeSheet[i].data);
+        //         gottenArray.timeSheet[i].prevHash = prevHash;
+        //         await blockArray.addTime(gottenArray.timeSheet[i]);
+        //         console.log(blockArray);
+        //     }
             /* printBlockChain(); */
-            buyDog();
-        }
-        createArray();
+        //     buyDog();
+        // }
+        // createArray();
+        printBlockChain();
         console.log('ls has been updated');
+
         
     } 
     //console.log(blockArray);
@@ -94,14 +96,15 @@ export default function blockchain () {
     console.log("köp " + dropDown.value);
         (async () => {
             const dogsName = await setDogName()
+            blockArray.timeSheet.map(work => {
             let blockData = { 
-                prevHash: Block.prevHash, 
+                prevHash: work.prevHash, 
                 timeStamp: Math.floor(Date.now() / 1000),
                 dogBreed: dropDown.value,
                 dogName: dogsName,
                 dogXP: 0,
                 dogState: "With owner",
-                hash: Block.hash
+                hash: work.hash
                 // owner: 
             }
             console.log(blockData);
@@ -111,6 +114,7 @@ export default function blockchain () {
         /* setTimeout(writeBlock, 100); */
         localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         printBlockChain();
+            })
         })();
  }
     buyBtn.addEventListener ("click", () => {
