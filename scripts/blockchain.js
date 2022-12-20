@@ -4,23 +4,12 @@ import Block from "./block.js";
 
 export default function blockchain () {
 
-    let newBlock = new Chain();
+    //let newBlock = new Chain();
 
     // Gör en if else funktion som kollar ifall en blockkedja finns i LS eller ej, om den finns så laddain den förexisterande, 
     // annars så kan den göra så som den gör nu (alltså printar genesisblock). Försök även baka in i denna funktionen
     // en variabel som börjar på 1 och varje gång ett block adderas  så ++ar den. Tänker att denna aggerar som blockidentifierare i kedjan
     // Så om blockkedjan finns i ls så ska denna siffra också läsas ifrån LS. 
-
-    if(!localStorage.getItem('blockchainObjectArr')){
-        var blockArray = [];
-        console.log(blockArray);
-    } else if (localStorage.getItem('blockchainObjectArr')){
-        var blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
-        console.log(blockArray);
-        
-    } 
-
-
     let content = document.getElementById("content");
 
     const chooseDogText = document.createElement("p");
@@ -38,6 +27,25 @@ export default function blockchain () {
     content.appendChild(blockExplorer);
 
     var dogsArray = [];
+
+    if(!localStorage.getItem('blockchainObjectArr')){
+        var blockArray = new Chain();
+        localStorage.setItem('blockchainObjectArr', JSON.stringify(blockArray));
+        printBlockChain();
+        //console.log(blockArray);
+    } else if (localStorage.getItem('blockchainObjectArr')){
+        var blockArray = new Chain();
+        blockArray.timeSheet.shift();
+        var gottenArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
+        blockArray.timeSheet = gottenArray;
+        console.log(gottenArray, blockArray.timeSheet);
+        console.log(blockArray);
+        printBlockChain();
+        
+    } 
+    //console.log(blockArray);
+
+
 
     fetch('https://dog.ceo/api/breeds/list/all') 
     .then(response => response.json()) 
@@ -81,7 +89,9 @@ export default function blockchain () {
                 // owner: 
             }
             console.log(blockData);
-            newBlock.addTime(new Block(blockData));
+            console.log(blockArray)
+            blockArray.addTime(new Block(blockData));
+            
         setTimeout(writeBlock, 100);
         printBlockChain();
         })();
@@ -96,19 +106,19 @@ export default function blockchain () {
     let blockNum = 0;
 
     function writeBlock() {
-        newBlock.timeSheet.map(work => {
+        blockArray.timeSheet.map(work => {
             let blockChain = { 
                 prevHash: work.prevHash,
                 dogBreed: work.data.dogBreed,
                 dogName: work.data.dogName,
                 dogState: work.data.dogState, 
-                dogXP: work.data.dogXP,
+                dogXP: work.dogXP,
                 //dogImage:
                 hash: work.hash
             }
-            blockArray.push(blockChain);
+            //blockArray.timeSheet.push(blockChain); // maybe here
             // console.log(blockArray.length);
-            localStorage.clear("blockchainObjectArr");
+            //localStorage.clear("blockchainObjectArr");
             localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         })
     blockNum++;
@@ -122,7 +132,8 @@ export default function blockchain () {
     function printBlockChain() {
         blockExplorer.innerHTML = ""; 
         //for (block in blockArray) {
-            newBlock.timeSheet.map(work => {
+            blockArray.timeSheet.map(work => {
+                console.log(work);
                 let timeBox = document.createElement("div");
                 timeBox.style.border = "3px solid magenta";
                 timeBox.style.padding = "20px";
