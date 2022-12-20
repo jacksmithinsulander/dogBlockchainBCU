@@ -88,7 +88,12 @@ export default function blockchain () {
             //console.log(blockArray);
             blockArray.addTime(new Block(blockData));
             console.log(blockArray);
+
             localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+
+            blockArray.addTime(new Block(blockData));
+        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+
         printBlockChain();
         })();
  }
@@ -114,7 +119,12 @@ export default function blockchain () {
                 timeBox.style.margin = "20px";
                 timeBox.style.backgroundColor = "cyan"
                 timeBox.style.borderRadius = "10px"
+
                 timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
+
+                timeBox.id = work.id;
+                timeBox.innerHTML = "<p> Previous Hash: " + work.prevHash + "<br/> Dogbreed: " + work.data.dogBreed + "<br/> Dogs Name: " + work.data.dogName + "<br> Dogs XP: " + work.data.dogXP + "<br> Dog is: " + work.data.dogState + "<br> Timestamp: " + work.data.timeStamp  + "<br/> Hash: " + work.hash + "</p>"
+
                 //timeBox.innerHTML = "<p>" + blockArray[block] + "</p>";
                 blockExplorer.appendChild(timeBox);
             })
