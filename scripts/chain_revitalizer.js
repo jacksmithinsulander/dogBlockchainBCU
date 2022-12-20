@@ -1,15 +1,20 @@
-import Block from "./block.js";
+import BlockGet from "./block_revitalizer.js";
 
-export default class Chain {
-    constructor() {
-        this.timeSheet = [this.createGenesisBlock()];
+export default class chainGet {
+    constructor(oldChain) {
+        this.timeSheet = this.remakeBlocks(oldChain);
         this.difficulty = 3;
+        console.log(this.timeSheet);
     }
 
-    createGenesisBlock() {
-        let newBlock = new Block({"dogName": "Genesis", "dogBreed": "golden retriever", "prevHash" : "1"})
-        //this.addTime (newBlock);
-        return newBlock
+    remakeBlocks(blockArray) {
+        let tempTimesheet = [];
+        blockArray.timeSheet.map(blockData => {
+            let block = new BlockGet(blockData);
+            tempTimesheet.push(block);
+            //console.log(tempTimesheet);
+        });
+        return tempTimesheet;
     }
 
     getLatestTime() {
@@ -35,22 +40,22 @@ export default class Chain {
             const currentBlock = this.timeSheet[i];
             const prevBlock = this.timeSheet[i -1];
 
-           // //////console.log("Testa block", currentBlock, prevBlock);
+           // //console.log("Testa block", currentBlock, prevBlock);
 
             let testHash = currentBlock.calculateHash().then(hash => {
-                //////console.log("testHash", hash);
+                //console.log("testHash", hash);
                 if (currentBlock.hash !== hash) {
-                    //////console.log("INVALID! Not same hash!", currentBlock.hash, hash);
+                    //console.log("INVALID! Not same hash!", currentBlock.hash, hash);
                     // return false;
                 }
             });
 
             if (currentBlock.prevHash !== prevBlock.hash) {
-                //////console.log("Invalid: Not same prev hash");
+                //console.log("Invalid: Not same prev hash");
                // return false;
             }
 
-            //////console.log("VALID");
+            //console.log("VALID");
            // return true;
         }
     }
