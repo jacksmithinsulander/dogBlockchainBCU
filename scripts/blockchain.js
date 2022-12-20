@@ -123,7 +123,12 @@ export default function blockchain () {
                 timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
 
                 timeBox.id = work.id;
-                timeBox.innerHTML = "<p> Previous Hash: " + work.prevHash + "<br/> Dogbreed: " + work.data.dogBreed + "<br/> Dogs Name: " + work.data.dogName + "<br> Dogs XP: " + work.data.dogXP + "<br> Dog is: " + work.data.dogState + "<br> Timestamp: " + work.data.timeStamp  + "<br/> Hash: " + work.hash + "</p>"
+
+                if (work.data.dogName === "Genesis"){
+                    timeBox.innerHTML = "<p> Genesis block </p>"
+                }else {
+                    timeBox.innerHTML = "<p> Previous Hash: " + work.prevHash + "<br/> Dogbreed: " + work.data.dogBreed + "<br/> Dogs Name: " + work.data.dogName + "<br> Dogs XP: " + work.data.dogXP + "<br> Dog is: " + work.data.dogState + "<br> Timestamp: " + work.data.timeStamp  + "<br/> Hash: " + work.hash + "</p>"
+                }
 
                 //timeBox.innerHTML = "<p>" + blockArray[block] + "</p>";
                 blockExplorer.appendChild(timeBox);
