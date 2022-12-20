@@ -1,17 +1,17 @@
-export default class Block {
-    constructor(data, index = 0, prevHash = "") {
-        this.index = index;
-        this.data = data;
-        this.timestamp = Date.now();
-        this.prevHash = prevHash;
-        this.hash = this.calculateHash();
-        this.nonce = 0;
-        console.log(this);
+export default class BlockGet {
+    constructor (data) {
+        this.index = data.index;
+        this.data = data.data;
+        console.log(data.data);
+        this.timestamp = data.timestamp;
+        this.prevHash = data.prevHash;
+        this.hash = data.hash;
+        this.nonce = data.nonce;
     }
 
     async calculateHash() {
         // RÄKNA UT BLOCKETS HASH
-        let msgInt8 = new TextEncoder().encode("salt1234salt"+JSON.stringify(this.data)+this.index+this.timeStamp+this.prevHash+this.nonce);
+        let msgInt8 = new TextEncoder().encode("salt1234salt"+JSON.stringify(this.data));
         let hashBuffer = await crypto.subtle.digest("SHA-256", msgInt8);
         let hashArray = Array.from(new Uint8Array(hashBuffer));
         let hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
@@ -25,11 +25,11 @@ export default class Block {
         // //console.log("tryHash", tryHash);
 
         while (!tryHash.toString().startsWith("0".repeat(difficulty))) {
-            this.nonce++;
-            tryHash = await this.calculateHash(this.nonce);
+            this.data.nonce++;
+            tryHash = await this.calculateHash();
             ////console.log("tryHash", tryHash);
         }
-        this.hash = tryHash;
+        this.data.hash = tryHash;
     }
-
+    
 }

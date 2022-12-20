@@ -1,5 +1,8 @@
 import Chain from "./chain.js";
 import Block from "./block.js";
+import BlockGet from "./block_revitalizer.js";
+import ChainGet from "./chain_revitalizer.js";
+import chainGet from "./chain_revitalizer.js";
 
 
 export default function blockchain () {
@@ -32,12 +35,14 @@ export default function blockchain () {
         var blockArray = new Chain();
         localStorage.setItem('blockchainObjectArr', JSON.stringify(blockArray));
         printBlockChain();
-        console.log('ls has been created');
+        //console.log('ls has been created');
     } else {
-        console.log('ls is updating');
+        //console.log('ls is updating');
         var blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
+        blockArray = new chainGet(blockArray);
+        //console.log(blockArray);
         printBlockChain();
-        console.log('ls has been updated');
+        //console.log('ls has been updated');
     } 
 
     fetch('https://dog.ceo/api/breeds/list/all') 
@@ -54,7 +59,7 @@ export default function blockchain () {
     }
 
     setTimeout(() => {
-        console.log(dogsArray);
+        //console.log(dogsArray);
         makeDropDown();
     }, 500);
 
@@ -69,7 +74,7 @@ export default function blockchain () {
     // för att även lägga till en url till en random bild i själva blocket som vi kan använda för att rendera i bild på hunden i t.ex. explorern eller ens 
     // dogwallet (som absolut är något vi borde lägga till!
  function buyDog() { 
-    console.log("köp " + dropDown.value);
+    //console.log("köp " + dropDown.value);
         (async () => {
             const dogsName = await setDogName()
             let blockData = { 
@@ -79,10 +84,16 @@ export default function blockchain () {
                 dogXP: 0,
                 dogState: "With owner"
             }
-            console.log(blockData);
-            console.log(blockArray);
+            //console.log(blockData);
+            //console.log(blockArray);
             blockArray.addTime(new Block(blockData));
-        localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+            console.log(blockArray);
+
+            localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+
+            //blockArray.addTime(new Block(blockData));
+            //localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+
         printBlockChain();
         })();
  }
@@ -95,25 +106,30 @@ export default function blockchain () {
     // Gör om den så att den istället för att bygga ihop det printade blocket som den gör manuellt nu, så läser den det från blockkedjan från ls. 
 
     async function printBlockChain() {
-        console.log("printing chain");
+        //console.log("printing chain");
         blockExplorer.innerHTML = ""; 
         //for (block in blockArray) {
             blockArray.timeSheet.map(work => {
-                setTimeout(console.log("print new"), 1000)
-                console.log(work);
+                //console.log("printing chain");
+                //setTimeout(console.log("print new"), 1000)
+                //console.log(work);
                 let timeBox = document.createElement("div");
                 timeBox.style.border = "3px solid magenta";
                 timeBox.style.padding = "20px";
                 timeBox.style.margin = "20px";
                 timeBox.style.backgroundColor = "cyan"
                 timeBox.style.borderRadius = "10px"
+
+                //timeBox.innerHTML = "<p>" + work.prevHash + "<br/>" + work.data.dogBreed + "<br/>" + work.data.dogName + "<br/>" + work.hash + "</p>"
+
                 timeBox.id = work.id;
+
                 if (work.data.dogName === "Genesis"){
                     timeBox.innerHTML = "<p> Genesis block </p>"
                 }else {
                     timeBox.innerHTML = "<p> Previous Hash: " + work.prevHash + "<br/> Dogbreed: " + work.data.dogBreed + "<br/> Dogs Name: " + work.data.dogName + "<br> Dogs XP: " + work.data.dogXP + "<br> Dog is: " + work.data.dogState + "<br> Timestamp: " + work.data.timeStamp  + "<br/> Hash: " + work.hash + "</p>"
                 }
-                
+
                 //timeBox.innerHTML = "<p>" + blockArray[block] + "</p>";
                 blockExplorer.appendChild(timeBox);
             })
