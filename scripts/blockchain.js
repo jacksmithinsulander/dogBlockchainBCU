@@ -81,7 +81,7 @@ export default function blockchain () {
             }
             console.log(blockData);
             console.log(blockArray);
-            blockArray.timeSheet.push(new Block(blockData));
+            blockArray.addTime(new Block(blockData));
         localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
         printBlockChain();
         })();
