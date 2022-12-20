@@ -3,7 +3,7 @@ import UserList from "./userList.js";
 import User from "./user.js";
 
 let users = new UserList();
-console.log("userList", users);
+//console.log("userList", users);
 
 export default function blockchainView(){  //blockchain() bytas mot ...
     content.innerHTML = "HEJEJ";
