@@ -7,7 +7,7 @@ export default class Chain {
     }
 
     createGenesisBlock() {
-        let newBlock = new Block({"dogName": "Genesis", "dogBreed": "golden retriever", "prevHash" : "1"})
+        let newBlock = new Block({"dogName": "Genesis"});
         //this.addTime (newBlock);
         return newBlock
     }
