@@ -1,4 +1,6 @@
 import logIn from "./logIn.js";
+import blockchain from "./blockchain.js";
+import blockchainView from "./blockchainView.js";
 
 export default class User {
     constructor(name, password) {
