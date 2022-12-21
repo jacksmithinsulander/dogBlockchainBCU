@@ -49,14 +49,43 @@ export default function saveNewMember(){
     })
 
     createBtn.addEventListener("click", () => {
-        let users = new UserList (JSON.parse(localStorage.getItem("users")));
-        console.log(users);
-        users.addUser(new User(inputCreateUserName.value, inputCreatePassword.value));
+        //let users = new UserList (JSON.parse(localStorage.getItem("users"))); // denna behövs inte och sparar lite tid med omkodning om vi bara 
+        // hämtar users array från json och revitalizear users arrayen
+        let users;
+        if (!localStorage.getItem("users")) {
+            users = [];
+            localStorage.setItem("users", users);
+            console.log('User list added to ls')
+        } else {
+            console.log("user list already present in ls")
+            users = JSON.parse(localStorage.getItem("users"));
+        }
+
+        let newUser = new User(inputCreateUserName.value, inputCreatePassword.value);
 
         setTimeout(() => {
+            users.users.push(newUser);
             localStorage.setItem("users", JSON.stringify(users));    
+            alert("user has been created and saved to local storage");
         }, 1000); 
+
+        // ide
+        // 1 hamta ls XX
+        // 2 skapa ny user och lagg till i array 
+        // 3 spara array till ls
+        // 4 == profit? 
+
+        // behover inga metoder efter att vi skapat anvandare.
+        // userlist onodigt
+        // vi behover if/else sats for att skapa ny user list i ls om vi inte redan har en
+
+        //console.log(users);
+        //users.addUser(new User(inputCreateUserName.value, inputCreatePassword.value));
+
+       /*  setTimeout(() => {
+            localStorage.setItem("users", JSON.stringify(users));    
+        }, 1000);  */
  
-        console.log("users", users);
+        //console.log("users", users);
     })
 }
