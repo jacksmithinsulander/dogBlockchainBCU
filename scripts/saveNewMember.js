@@ -1,7 +1,7 @@
 import pug from "./pictures.js";
 import logIn from "./logIn.js";
-import UserList from "./userList.js";
 import User from "./user.js";
+
 export default function saveNewMember() {
     pug();
     // LABEL FÖR NYTT USERNAME

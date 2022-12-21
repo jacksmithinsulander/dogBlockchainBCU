@@ -1,8 +1,3 @@
-import Chain from "./chain.js";
-import Block from "./block.js";
-import BlockGet from "./block_revitalizer.js";
-import ChainGet from "./chain_revitalizer.js";
-import blockchain from "./blockchain.js";
 export default function printBlockChain() {
     const blockExplorer = document.createElement("div");
     blockExplorer.id = "blockExplorer";

@@ -28,8 +28,8 @@ export default class Chain {
         // VALIDERA VÅR KEDJA
         for (let i = 1; i < this.timeSheet.length; i++) {
             const currentBlock = this.timeSheet[i];
-            const prevBlock = this.timeSheet[i - 1];
-            let testHash = currentBlock.calculateHash().then(hash => {});
+            //const prevBlock = this.timeSheet[i - 1];
+            //let testHash = currentBlock.calculateHash().then(hash => {});
         }
     }
 }

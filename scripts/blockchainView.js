@@ -1,6 +1,5 @@
 import logIn from "./logIn.js";
 import UserList from "./userList.js";
-import User from "./user.js";
 
 let users = new UserList();
 

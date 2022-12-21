@@ -1,10 +1,6 @@
 import Chain from "./chain.js";
 import Block from "./block.js";
-import BlockGet from "./block_revitalizer.js";
 import ChainGet from "./chain_revitalizer.js";
-import chainGet from "./chain_revitalizer.js";
-import blockchainView from "./blockchainView.js";
-import logIn from "./logIn.js";
 import headerMenuMaker from "./headerMenuMaker.js";
 
 export default function blockchain() {
@@ -30,7 +26,7 @@ export default function blockchain() {
     } else {
         var blockArray = JSON.parse(localStorage.getItem(
         'blockchainObjectArr'));
-        blockArray = new chainGet(blockArray);
+        blockArray = new ChainGet(blockArray);
     }
     fetch('https://dog.ceo/api/breeds/list/all').then(response => response
     .json()).then(data => {
