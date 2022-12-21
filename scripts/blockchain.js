@@ -11,10 +11,9 @@ import blockchainView from "./blockchainView.js";
 export default function blockchain () {
 
     let content = document.getElementById("content");
-    let blockExplorerView = document.getElementById("blockExplorerView");
-    // let blockContent = document.createElement("div");
-    // blockContent.id = "blockContent";
-    // document.body.appendChild(blockContent);
+    const header = document.getElementById("header")
+
+    header.innerHTML = "";
 
     const chooseDogText = document.createElement("p");
     content.appendChild(chooseDogText);
@@ -125,6 +124,16 @@ export default function blockchain () {
                 blockExplorer.appendChild(timeBox);
             })
     }
+    
+
+    let blockExplorerView = document.createElement("button");
+    blockExplorerView.id = "blockExplorerView";
+    blockExplorerView.innerText = "Blockchain Explorer";
+    header.appendChild(blockExplorerView);
+
+    let returnBtn = document.createElement("button");
+    returnBtn.innerText = "Return"
+    returnBtn.id = "returnBtn";
 
     blockExplorerView.addEventListener("click", () => {
         
@@ -132,24 +141,26 @@ export default function blockchain () {
         const blockExplorer = document.createElement("div");
         blockExplorer.id = "blockExplorer";
         content.appendChild(blockExplorer);
+        returnBtnfunc();
         printBlockChain();
+
     });
 
-    const header = document.getElementById("header")
-    let returnBtn = document.createElement("button");
-    returnBtn.innerText = "Return"
-    returnBtn.id = "returnBtn";
-    header.appendChild(returnBtn);
+    function returnBtnfunc () {
+        header.appendChild(returnBtn);
 
-    returnBtn.addEventListener("click", () => {
+        returnBtn.addEventListener("click", () => {
         if(localStorage.getItem("userId")) {
             content.innerHTML = "";
             blockchainView();
             blockchain();
-            returnBtn.remove();
+            header.removeChild(returnBtn);
         }else {
             console.log("hej, log ut")
         }
     })
     
+    }
+
 }
+
