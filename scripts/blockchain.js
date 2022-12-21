@@ -8,7 +8,7 @@ import chainGet from "./chain_revitalizer.js";
 export default function blockchain () {
 
     let content = document.getElementById("content");
-
+    let blockExplorerView = document.getElementById("blockExplorerView");
     // let blockContent = document.createElement("div");
     // blockContent.id = "blockContent";
     // document.body.appendChild(blockContent);
@@ -27,20 +27,20 @@ export default function blockchain () {
     content.appendChild(buyBtn);
     buyBtn.innerHTML = "Buy dog";
 
-    const blockExplorer = document.createElement("div");
-    blockExplorer.id = "blockExplorer";
-    content.appendChild(blockExplorer);
+    //const blockExplorer = document.createElement("div");
+    //blockExplorer.id = "blockExplorer";
+    //content.appendChild(blockExplorer);
 
     var dogsArray = [];
 
     if(!(localStorage.getItem('blockchainObjectArr'))){
         var blockArray = new Chain();
         localStorage.setItem('blockchainObjectArr', JSON.stringify(blockArray));
-        printBlockChain();
+        //printBlockChain();
     } else {
         var blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
         blockArray = new chainGet(blockArray);
-        printBlockChain();
+        //printBlockChain();
     } 
 
     fetch('https://dog.ceo/api/breeds/list/all') 
@@ -79,12 +79,14 @@ export default function blockchain () {
         (async () => {
             const dogImg = await setDogImg(dropDown.value);
             const dogsName = await setDogName()
+            const dogOwner = await localStorage.getItem("userId");
             let blockData = { 
                 timeStamp: Math.floor(Date.now() / 1000),
                 dogBreed: dropDown.value,
                 dogName: dogsName,
                 dogImage: dogImg,
                 dogXP: 0,
+                dogsOwner: dogOwner,
                 dogState: "With owner"
             }
             blockArray.addTime(new Block(blockData));
@@ -93,11 +95,11 @@ export default function blockchain () {
             printBlockChain(); */
             setTimeout(() => {
                 localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray));
-                printBlockChain();
+                //printBlockChain();
             }, 1000);
         })();
  }
-    buyBtn.addEventListener ("click", () => {
+    buyBtn.addEventListener("click", () => {
         buyDog();
     }); 
 
@@ -115,9 +117,17 @@ export default function blockchain () {
                 if (work.data.dogName === "Genesis"){
                     timeBox.innerHTML = "<p> Genesis block </p>"
                 }else {
-                    timeBox.innerHTML = "<p> Previous Hash: " + work.prevHash + "<br/> Dogbreed: " + work.data.dogBreed + "<br/> Dogs Name: " + work.data.dogName + "<br> Dogs XP: " + work.data.dogXP + "<br> Dog is: " + work.data.dogState + "<br> Dog Image URL: " + work.data.dogImage + "<br> Timestamp: " + work.data.timeStamp  + "<br/> Hash: " + work.hash + "</p> <br> <img src='" + work.data.dogImage + "' style='object-fit:contain;'>" 
+                    timeBox.innerHTML = "<p> Previous Hash: " + work.prevHash + "<br/> Dogbreed: " + work.data.dogBreed + "<br/> Dogs Name: " + work.data.dogName + "<br> Dogs XP: " + work.data.dogXP + "<br> Owner of dog: " + work.data.dogsOwner + "<br> Dog is: " + work.data.dogState + "<br> Dog Image URL: " + work.data.dogImage + "<br> Timestamp: " + work.data.timeStamp  + "<br/> Hash: " + work.hash + "</p> <br> <img src='" + work.data.dogImage + "' style='object-fit:contain;'>" 
                 }
                 blockExplorer.appendChild(timeBox);
             })
     }
+
+    blockExplorerView.addEventListener("click", () => {
+        content.innerHTML = "";
+        const blockExplorer = document.createElement("div");
+        blockExplorer.id = "blockExplorer";
+        content.appendChild(blockExplorer);
+        printBlockChain();
+    });
 }

@@ -74,8 +74,8 @@ export default function logIn(){
                     setTimeout (testPassword, 1000);
                     function testPassword () {
                         if (users.users[i].password === checkObject.password) {
-                            console.log("OKKKK");
-                            localStorage.setItem("userId", users.users[i].userId);
+                            console.log("OKKKK", users.users[i].name);
+                            localStorage.setItem("userId", users.users[i].name);
                             content.innerHTML = "";
                             blockchainView();
                             blockchain();
