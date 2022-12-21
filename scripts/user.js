@@ -37,7 +37,7 @@ export default class User {
 
     async checkPassword(password) {
         // Kolla om lösen stämmer vid inlogg
-        console.log("ingåendepassword", password)
+        console.log("ingående password", password)
         let testPassword = await this.consumePassword(password)
 
         console.log("testPassword", testPassword);

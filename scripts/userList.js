@@ -1,6 +1,7 @@
 export default class UserList {
-    constructor() {
-        this.users = [];
+    constructor(memberData) {
+        console.log(memberData);
+        this.users = []; // Remake user objects // return empty array if member data is empty
     }
 
     addUser(user) {
@@ -8,4 +9,5 @@ export default class UserList {
         //user.addToLs();
     }
 
+    // Remake users method
 }
