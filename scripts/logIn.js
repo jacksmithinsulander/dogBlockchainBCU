@@ -63,23 +63,34 @@ export default function logIn(){
 
     logInBtn.addEventListener("click", async () => {
 
-
         let users = JSON.parse(localStorage.getItem("users"));
-        console.log(users.users[0].name);
-        /* let foundUser = users.users.find(() => {
-            
-        });
-        */
         function findAUser () {
-            console.log(users.users)
+            console.log(users.users.length);
+
+            for (let i = 0; i < users.users.length; i++) {
+                if (inputUserName.value == users.users[i].name){
+                    //console.log("great success");
+                    let checkObject = new User(inputUserName.value, inputPassword.value);
+                    setTimeout (testPassword, 1000);
+                    function testPassword () {
+                        if (users.users[i].password === checkObject.password) {
+                            console.log("OKKKK");
+                            localStorage.setItem("userId", users.users[i].userId);
+                            content.innerHTML = "";
+                            blockchainView();
+                            blockchain();
+                        } else {
+                            alert("Password is incorrect")
+                        }
+                    }
+                }
+                else {
+                    alert("Username is incorrect")
+                }
+            }
+ 
         }
-
-
-        //console.log(foundUser + "hittade denna user fran lS objekt");
-
-        //console.log("Testa lösenordet: ", inputPassword.value);
-        //let userId = await foundUser.checkPassword(inputPassword.value); //.checkpassword??
-        localStorage.setItem("userId", userId);
+        findAUser();
     })
 }
 
