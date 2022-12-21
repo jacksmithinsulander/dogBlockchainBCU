@@ -74,13 +74,19 @@ export default function logIn(){
         let userId = await foundUser.checkPassword(inputPassword.value); //.checkpassword??
         localStorage.setItem("userId", userId);
         // console.log("userId", userId);
+
         /* if (foundUser && userId){ //async?
         content.innerHTML = "";
         blockchainView();//bytas ut 
         blockchain();
         } else {
          //   alert = "Sorry invalid password";
-        } */
+        } 
+ */
+        // login bypass
+        content.innerHTML = "";
+        blockchainView();//bytas ut 
+        blockchain();
     })
 }
 

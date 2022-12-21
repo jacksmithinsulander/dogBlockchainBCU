@@ -88,9 +88,13 @@ export default function blockchain () {
                 dogState: "With owner"
             }
             blockArray.addTime(new Block(blockData));
-            console.log(blockArray);
+            /* console.log(blockArray);
             localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
-        printBlockChain();
+            printBlockChain(); */
+            setTimeout(() => {
+                localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray));
+                printBlockChain();
+            }, 1000);
         })();
  }
     buyBtn.addEventListener ("click", () => {
