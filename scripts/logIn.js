@@ -70,19 +70,17 @@ export default function logIn(){
 
         // Kolla om foundUser är true
         // console.log("foundUser", foundUser);
-        //console.log("Testa lösenordet: ", foundUser.checkPassword(inputPassword.value));
+        console.log("Testa lösenordet: ", inputPassword.value);
         let userId = await foundUser.checkPassword(inputPassword.value); //.checkpassword??
         localStorage.setItem("userId", userId);
         // console.log("userId", userId);
-        //if (foundUser && userId){ //async?
+        /* if (foundUser && userId){ //async?
         content.innerHTML = "";
         blockchainView();//bytas ut 
         blockchain();
-        //}
-            // console.log("userList", users);
-       // } else {
+        } else {
          //   alert = "Sorry invalid password";
-         
+        } */
     })
 }
 

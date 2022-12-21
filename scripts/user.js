@@ -15,11 +15,13 @@ export default class User {
     } */
 
    async consumePassword(password) {
+        console.log("consume password", password)
+
         let msgInt8 = new TextEncoder().encode(password+"salt1234salt");
         let hashBuffer = await crypto.subtle.digest("SHA-256", msgInt8);
         let hashArray = Array.from(new Uint8Array(hashBuffer));
         let hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
-        //console.log("hashHex", hashHex);
+        console.log("hashHex", hashHex);
         return hashHex;  
     }
 
@@ -33,6 +35,7 @@ export default class User {
 
     async checkPassword(password) {
         // Kolla om lösen stämmer vid inlogg
+        console.log("ingåendepassword", password)
         let testPassword = await this.consumePassword(password)
 
         console.log("testPassword", testPassword);
@@ -40,6 +43,9 @@ export default class User {
         if (testPassword === this.password) {
             console.log("Rätt lösenord");
             //alert = "Correct password"
+            content.innerHTML = "";
+            blockchainView();//bytas ut 
+            blockchain();
             return this.id;
         } else {
             //console.log("Fel lösenord");
