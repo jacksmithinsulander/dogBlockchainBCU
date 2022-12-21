@@ -89,12 +89,18 @@ export default function blockchain () {
             blockArray.addTime(new Block(blockData));
             console.log(blockArray);
 
-            localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+            /// skapa en arrow funkyion i set timeout med ls save o pBC();
+            /* function printAndSaveBlockchain () {
+                localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray));
+                printBlockChain();
+            }
+            setTimeout(printAndSaveBlockchain, 1000); */
 
-            //blockArray.addTime(new Block(blockData));
-            //localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray))
+            setTimeout(() => {
+                localStorage.setItem("blockchainObjectArr", JSON.stringify(blockArray));
+                printBlockChain();
+            }, 1000);
 
-        printBlockChain();
         })();
  }
     buyBtn.addEventListener ("click", () => {

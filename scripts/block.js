@@ -4,7 +4,7 @@ export default class Block {
         this.data = data;
         this.timestamp = Date.now();
         this.prevHash = prevHash;
-        this.hash = this.calculateHash();
+        this.hash = this.calculateHash().then(data => this.hash = data); //.then 
         this.nonce = 0;
         console.log(this);
     }
