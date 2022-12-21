@@ -52,8 +52,11 @@ export default function saveNewMember(){
         let users = new UserList (JSON.parse(localStorage.getItem("users")));
         console.log(users);
         users.addUser(new User(inputCreateUserName.value, inputCreatePassword.value));
-        localStorage.setItem("users", JSON.stringify(users));    
-        console.log("user added to LS");  
-        //console.log("users", users);
+
+        setTimeout(() => {
+            localStorage.setItem("users", JSON.stringify(users));    
+        }, 1000); 
+ 
+        console.log("users", users);
     })
 }
