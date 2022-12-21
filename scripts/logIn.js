@@ -85,7 +85,7 @@ export default function logIn(){
                     }
                 }
                 else {
-                    alert("Username is incorrect")
+                    //alert("Username is incorrect")
                 }
             }
  
