@@ -3,6 +3,9 @@ import Block from "./block.js";
 import BlockGet from "./block_revitalizer.js";
 import ChainGet from "./chain_revitalizer.js";
 import chainGet from "./chain_revitalizer.js";
+import blockchainView from "./blockchainView.js";
+
+
 
 
 export default function blockchain () {
@@ -124,10 +127,29 @@ export default function blockchain () {
     }
 
     blockExplorerView.addEventListener("click", () => {
+        
         content.innerHTML = "";
         const blockExplorer = document.createElement("div");
         blockExplorer.id = "blockExplorer";
         content.appendChild(blockExplorer);
         printBlockChain();
     });
+
+    const header = document.getElementById("header")
+    let returnBtn = document.createElement("button");
+    returnBtn.innerText = "Return"
+    returnBtn.id = "returnBtn";
+    header.appendChild(returnBtn);
+
+    returnBtn.addEventListener("click", () => {
+        if(localStorage.getItem("userId")) {
+            content.innerHTML = "";
+            blockchainView();
+            blockchain();
+            returnBtn.remove();
+        }else {
+            console.log("hej, log ut")
+        }
+    })
+    
 }
