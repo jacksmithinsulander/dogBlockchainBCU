@@ -2,6 +2,7 @@ import blockchain from "./blockchain.js";
 import logIn from "./logIn.js";
 import blockchainView from "./blockchainView.js";
 import printBlockChain from "./printBlockChain.js";
+import walletView from "./walletView.js";
 export default function headerMenuMaker() {
     let blockExplorerView = document.createElement("button");
     blockExplorerView.id = "blockExplorerView";
@@ -24,6 +25,10 @@ export default function headerMenuMaker() {
         dogGymBtn.id = "dogGymBtn";
         dogGymBtn.innerText = "Dog Gym";
         header.appendChild(dogGymBtn);
+        walletBtn.addEventListener('click', () => {
+            walletView();
+            returnBtnfunc();    
+        })
     }
 
     function returnBtnfunc() {
@@ -41,4 +46,5 @@ export default function headerMenuMaker() {
             }
         })
     }
+
 }

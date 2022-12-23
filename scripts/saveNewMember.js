@@ -49,8 +49,7 @@ export default function saveNewMember() {
             inputCreatePassword.value);
         setTimeout(() => {
             users.users.push(newUser);
-            localStorage.setItem("users", JSON.stringify(
-            users));
+            localStorage.setItem("users", JSON.stringify(users));
             alert(
                 "user has been created and saved to local storage");
         }, 1000);

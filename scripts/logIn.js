@@ -62,13 +62,14 @@ export default function logIn() {
                     if (users.users[i].password === checkObject
                         .password) {
                         console.log("OKKKK", users.users[i].name);
-                        localStorage.setItem("userId", users.users[
-                            i].name);
+                        localStorage.setItem("userId", inputUserName.value);
+
+                        console.log(users.users[i].name);
                         content.innerHTML = "";
                         blockchainView();
                         blockchain();
                     } else {
-                        alert("Password or username is incorrect")
+                        //alert("Password or username is incorrect")
                     }
                 }
             }
