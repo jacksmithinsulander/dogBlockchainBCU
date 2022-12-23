@@ -1,9 +1,29 @@
+import validate from "./validate.js";
+import validateError from "./validateError.js";
+
 export default function printBlockChain() {
     const blockExplorer = document.createElement("div");
     blockExplorer.id = "blockExplorer";
     content.appendChild(blockExplorer);
     async function blockchainPrinter() {
         blockExplorer.innerHTML = "";
+        
+        let validateBtn = document.createElement("button");
+        validateBtn.id = "validateBtn";
+        validateBtn.innerText = "Validate chain";
+        blockExplorer.appendChild(validateBtn);
+        validateBtn.addEventListener("click", () => {
+          validate(blockArray);
+        })
+
+        let createErrorBtn = document.createElement("button");
+        createErrorBtn.id = "vcreateErrorBtn";
+        createErrorBtn.innerText = "Create error";
+        blockExplorer.appendChild(createErrorBtn);
+        createErrorBtn.addEventListener("click", () => {
+          validateError(blockArray);
+        })
+        
         var blockArray = JSON.parse(localStorage.getItem(
             'blockchainObjectArr'));
         blockArray.timeSheet.map(work => {
@@ -33,5 +53,5 @@ export default function printBlockChain() {
             blockExplorer.appendChild(timeBox);
         })
     }
-    blockchainPrinter();
+    blockchainPrinter(); 
 }

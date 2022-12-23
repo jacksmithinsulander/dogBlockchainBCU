@@ -21,4 +21,5 @@ export default function blockchainView() {
         document.body.style.backgroundColor = "#cccdcf";
         logOutBtn.remove();
     })
+    
 }
