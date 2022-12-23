@@ -34,7 +34,7 @@ export default function printBlockChain() {
             timeBox.style.backgroundColor = "cyan"
             timeBox.style.borderRadius = "10px"
             timeBox.id = work.id;
-            timeBox.id = "blockBoxar"
+            timeBox.id = "blockBoxar";
             if (work.data.dogName === "Genesis") {
                 timeBox.innerHTML = "<p> Genesis block </p>"
             } else {
