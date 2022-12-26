@@ -84,6 +84,7 @@ export default function blockchain() {
     }
     buyBtn.addEventListener("click", () => {
         buyDog();
+        alert("You bought a dog!");
     });
     headerMenuMaker();
 }

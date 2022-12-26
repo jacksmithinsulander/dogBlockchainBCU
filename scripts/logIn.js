@@ -69,7 +69,7 @@ export default function logIn() {
                         blockchainView();
                         blockchain();
                     } else {
-                        //alert("Password or username is incorrect")
+                        alert("Password or username is incorrect")
                     }
                 }
             }
