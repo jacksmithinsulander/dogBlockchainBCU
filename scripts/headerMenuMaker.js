@@ -21,10 +21,6 @@ export default function headerMenuMaker() {
         walletBtn.id = "walletBtn";
         walletBtn.innerText = "Dog Wallet";
         header.appendChild(walletBtn);
-        let dogGymBtn = document.createElement("button");
-        dogGymBtn.id = "dogGymBtn";
-        dogGymBtn.innerText = "Dog Gym";
-        header.appendChild(dogGymBtn);
         walletBtn.addEventListener('click', () => {
             walletView();
             returnBtnfunc();    

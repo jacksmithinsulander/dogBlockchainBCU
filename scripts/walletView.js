@@ -42,8 +42,8 @@ export default function walletView () {
         } else {
             gymButton.innerHTML = "Send home!";
             gymButton.addEventListener('click', () => {
-                dogGym();
-                walletView(); // skapa denna i modul
+                dogGym(ownedDogs[i].data);
+                walletView(); 
             });
         }
 

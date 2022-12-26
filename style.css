@@ -136,7 +136,7 @@ h3{
     position: relative;
 } 
 
-#blockExplorerView, #returnBtn, #dogGymBtn, #walletBtn{
+#blockExplorerView, #returnBtn, #walletBtn{
     background: none;
     border: none;
     align-self: center;
