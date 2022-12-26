@@ -24,7 +24,7 @@ export default class Chain {
         // PUSHA
         this.timeSheet.push(newTime);
     }
-    isChainValid() {
+    isChainValid() { //Ta bort
         // VALIDERA VÅR KEDJA
         for (let i = 1; i < this.timeSheet.length; i++) {
             const currentBlock = this.timeSheet[i];

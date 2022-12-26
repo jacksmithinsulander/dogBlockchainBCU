@@ -1,4 +1,4 @@
-import headerMenuMaker from "./headerMenuMaker.js";
+import dogGym from "./dogGym.js";
 
 export default function walletView () {
     const content = document.getElementById("content");
@@ -36,13 +36,13 @@ export default function walletView () {
         if (ownedDogs[i].data.dogState == "With owner") {
             gymButton.innerHTML = "Send to gym!";
             gymButton.addEventListener('click', () => {
-                dogStateChange(); // skapa denna i modul
+                dogGym(ownedDogs[i].data); 
                 walletView();
             });
         } else {
             gymButton.innerHTML = "Send home!";
             gymButton.addEventListener('click', () => {
-                dogStateChange();
+                dogGym();
                 walletView(); // skapa denna i modul
             });
         }
