@@ -65,16 +65,17 @@ export default function blockchain() {
             const dogImg = await setDogImg(dropDown.value);
             const dogsName = await setDogName()
             const dogOwner = await localStorage.getItem("userId");
+            const dogEvent = "Bought dog"; 
             let blockData = {
                 timeStamp: Math.floor(Date.now() / 1000),
-                dogBreed: dropDown.value,
+                dogBreed: dropDown.value.charAt(0).toUpperCase() + dropDown.value.slice(1),
                 dogName: dogsName,
                 dogImage: dogImg,
                 dogXP: 0,
                 dogsOwner: dogOwner,
                 dogState: "With owner"
             }
-            blockArray.addTime(new Block(blockData));
+            blockArray.addTime(new Block(blockData, dogEvent));
             setTimeout(() => {
                 localStorage.setItem("blockchainObjectArr", JSON
                     .stringify(blockArray));

@@ -3,7 +3,7 @@ export default class BlockGet {
         this.index = data.index;
         this.data = data.data;
         console.log(data.data);
-        this.timestamp = data.timestamp;
+        //this.timestamp = data.timestamp;
         this.prevHash = data.prevHash;
         this.hash = data.hash;
         this.nonce = data.nonce;

@@ -1,8 +1,10 @@
 export default class Block {
-    constructor(data, index = 0, prevHash = "") {
-        this.index = index;
+    static nextIndex = 0;
+    constructor(data, event, prevHash = "") {
+        this.index = Block.nextIndex++;
         this.data = data;
-        this.timestamp = Date.now();
+        //this.timestamp = Date.now();
+        this.event = event; 
         this.prevHash = prevHash;
         this.hash = this.calculateHash().then(data => this.hash = data);
         this.nonce = 0;
@@ -27,5 +29,6 @@ export default class Block {
             tryHash = await this.calculateHash(this.nonce);
         }
         this.hash = tryHash;
+        //this.index++;
     }
 }
