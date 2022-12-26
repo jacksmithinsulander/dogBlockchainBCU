@@ -7,7 +7,7 @@ export default function blockchain() {
     let content = document.getElementById("content");
     const header = document.getElementById("header")
     header.innerHTML = "";
-    content.innerHTML = "";
+    // content.innerHTML = "";
     const chooseDogText = document.createElement("p");
     content.appendChild(chooseDogText);
     chooseDogText.id = "chooseDogText"

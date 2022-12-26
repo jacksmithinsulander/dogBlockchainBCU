@@ -3,15 +3,16 @@ import UserList from "./userList.js";
 
 let users = new UserList();
 
+let logOutBtn = document.createElement("button");
+    logOutBtn.id = "logOutBtn";
+    logOutBtn.innerText = "Log out";
+
 export default function blockchainView() {
     let imgtwo = document.createElement("img");
     imgtwo.src = "pexels-gilberto-reyes-825947.jpg";
     imgtwo.id = "pitbull";
     content.appendChild(imgtwo);
     document.body.style.backgroundColor = "#f5f5f5";
-    let logOutBtn = document.createElement("button");
-    logOutBtn.id = "logOutBtn";
-    logOutBtn.innerText = "Log out";
     document.body.appendChild(logOutBtn);
     logOutBtn.addEventListener("click", () => {
         content.innerHTML = "";
@@ -19,7 +20,8 @@ export default function blockchainView() {
         logIn();
         localStorage.removeItem("userId");
         document.body.style.backgroundColor = "#cccdcf";
-        logOutBtn.remove();
+        document.body.removeChild(logOutBtn);
+        header.removeChild(returnBtn);
     })
     
 }

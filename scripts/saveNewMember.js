@@ -4,8 +4,13 @@ import User from "./user.js";
 
 export default function saveNewMember() {
     pug();
+    let headline = document.createElement("h1");
+    headline.id = "newMemberHeadline"; 
+    headline.innerText = "NEW MEMBER";
+    content.appendChild(headline);
     // LABEL FÖR NYTT USERNAME
     let labelNewUser = document.createElement("Label");
+    labelNewUser.id = "labelNewUser";
     labelNewUser.innerText = "New username:";
     content.appendChild(labelNewUser);
     //SKAPAR NY ANVÄNDARE
@@ -15,11 +20,12 @@ export default function saveNewMember() {
     content.appendChild(inputCreateUserName);
     // LABEL FÖR NYTT LÖSENORD
     let labelNewPassword = document.createElement("Label");
+    labelNewPassword.id = "labelNewPassword";
     labelNewPassword.innerText = "New password:";
     content.appendChild(labelNewPassword);
     //SKAPAR NYTT LÖSENORD
     let inputCreatePassword = document.createElement("input");
-    inputCreatePassword.id = "inputPassword";
+    inputCreatePassword.id = "inputCreatePassword";
     inputCreatePassword.type = "text";
     content.appendChild(inputCreatePassword);
     //SKAPAR CREATE-KNAPP
