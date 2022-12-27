@@ -65,7 +65,7 @@ export default function walletView () {
     
     for (let i = 0; i < ownedDogs.length; i++) {
         const dogDiv = document.createElement("div");
-        dogDiv.id = `dogDiv${i}`;
+        dogDiv.id = `dogDivs dogDiv${i}`;
         dogDiv.class = "dogDiv";
 
         dogDiv.innerHTML = 

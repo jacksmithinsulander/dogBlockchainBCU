@@ -40,15 +40,15 @@ export default function printBlockChain() {
             } else {
                 timeBox.innerHTML = "<p> Previous Hash: " + work
                     .prevHash + "</br> Event: " + work.event + "<br/> Dogbreed: " + work.data
-                    .dogBreed + "<br/> Dogs Name: " + work.data
+                    .dogBreed + "</br> Dogs Name: " + work.data
                     .dogName + "<br> Dogs XP: " + work.data.dogXP +
                     "<br> Owner of dog: " + work.data.dogsOwner +
                     "<br> Dog is: " + work.data.dogState +
                     "<br> Dog Image URL: " + work.data.dogImage +
                     "<br> Timestamp: " + work.data.timeStamp +
-                    "<br/> Hash: " + work.hash +
-                    "</p> <br> <img src='" + work.data.dogImage +
-                    "' style='object-fit:contain;'>"
+                    "</br> Hash: " + work.hash +
+                    "</p> <br> <div id='dogImageBox'> <img id='doggyImage' src='" + work.data.dogImage +
+                    "' style='object-fit:contain;'> </div>"
             }
             blockExplorer.appendChild(timeBox);
         })
