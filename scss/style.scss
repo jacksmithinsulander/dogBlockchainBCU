@@ -7,6 +7,24 @@ body{
     height: 100vh;
 }
 
+.dogDiv {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+  }
+  
+  .dogDiv:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  #dogWalletImg {
+    border-radius: 5px 5px 0 0;
+  }
+  
+  #dogCardContainer {
+    padding: 2px 16px;
+  }
+
 #dogImageBox {
     display: flex;
     flex-direction: column;
@@ -239,6 +257,8 @@ h3{
 }
 
 #pitbull{
+    width: 550px;
+    height: 500px;
     position: absolute;
     border: none;
     top:-4px;

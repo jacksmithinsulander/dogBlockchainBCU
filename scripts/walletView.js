@@ -65,14 +65,15 @@ export default function walletView () {
     
     for (let i = 0; i < ownedDogs.length; i++) {
         const dogDiv = document.createElement("div");
-        dogDiv.id = `dogDivs dogDiv${i}`;
-        dogDiv.class = "dogDiv";
+        dogDiv.id = `dogDiv${i}`;
+        dogDiv.className += "dogDiv";
 
         dogDiv.innerHTML = 
-        `<img src="${ownedDogs[i].data.dogImage}" alt="din hund"> </br> 
-        <h3>${ownedDogs[i].data.dogName}</h3> </br> 
+        `<img id = "dogWalletImg" src="${ownedDogs[i].data.dogImage}" alt="din hund"> </br>
+        <div id = "dogCardContainer">
+        <h2>${ownedDogs[i].data.dogName}</h2> </br> 
         <h4>XP: ${ownedDogs[i].data.dogXP}</h4> 
-        <p>Dog State: ${ownedDogs[i].data.dogState}` ;
+        <p>Dog State: ${ownedDogs[i].data.dogState}</p> </div>` ;
 
         const gymButton = document.createElement("button");
         gymButton.id = `gymBtn${i}`;
