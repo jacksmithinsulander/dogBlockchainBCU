@@ -2,12 +2,13 @@ import Chain from "./chain.js";
 import Block from "./block.js";
 import ChainGet from "./chain_revitalizer.js";
 import headerMenuMaker from "./headerMenuMaker.js";
+import blockchainView from "./blockchainView.js";
 
 export default function blockchain() {
     let content = document.getElementById("content");
     const header = document.getElementById("header")
     header.innerHTML = "";
-    // content.innerHTML = "";
+    content.innerHTML = "";
     const chooseDogText = document.createElement("p");
     content.appendChild(chooseDogText);
     chooseDogText.id = "chooseDogText"
@@ -89,4 +90,5 @@ export default function blockchain() {
         alert("You bought a dog!");
     });
     headerMenuMaker();
+    blockchainView();
 }

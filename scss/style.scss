@@ -1,10 +1,20 @@
 @import "normalize";
+*{
+	box-sizing:border-box;
+}
 body{
     display: flex;
     flex-direction: row;
+    align-items: center;
     background-color: #cccdcf;
     width: 100vw;
     height: 100vh;
+}
+
+#cardDiv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 .dogDiv {
@@ -12,9 +22,7 @@ body{
     transition: 0.3s;
     border-radius: 5px;
     height: min-content;
-    width:auto;
-    padding: 5em;
-    margin: 10em;
+    margin: 10px;
   }
   
   .dogDiv:hover {
@@ -66,6 +74,7 @@ body{
 
 #content{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-self: center;
     align-items: center;
@@ -132,7 +141,6 @@ h3{
 }
 
 #logOutBtn{
-    position:fixed;
     height: 50px;
     width: 100px;
     left: 90vw;

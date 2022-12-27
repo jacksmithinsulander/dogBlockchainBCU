@@ -66,7 +66,6 @@ export default function logIn() {
 
                         console.log(users.users[i].name);
                         content.innerHTML = "";
-                        blockchainView();
                         blockchain();
                     } else {
                         alert("Password or username is incorrect")

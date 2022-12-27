@@ -3,9 +3,10 @@ import UserList from "./userList.js";
 
 let users = new UserList();
 
+let header = document.querySelector('#header'); // select the header element
 let logOutBtn = document.createElement("button");
-    logOutBtn.id = "logOutBtn";
-    logOutBtn.innerText = "Log out";
+logOutBtn.id = "logOutBtn";
+logOutBtn.innerText = "Log out";
 
 export default function blockchainView() {
     let imgtwo = document.createElement("img");
@@ -13,15 +14,14 @@ export default function blockchainView() {
     imgtwo.id = "pitbull";
     content.appendChild(imgtwo);
     document.body.style.backgroundColor = "#f5f5f5";
-    document.body.appendChild(logOutBtn);
+    header.appendChild(logOutBtn); // append the logOutBtn element to the header element
     logOutBtn.addEventListener("click", () => {
         content.innerHTML = "";
         header.innerHTML = "";
         logIn();
         localStorage.removeItem("userId");
         document.body.style.backgroundColor = "#cccdcf";
-        document.body.removeChild(logOutBtn);
+        document.body.removeChild(logOutBtn); // remove the logOutBtn element from the document body
         header.removeChild(returnBtn);
     })
-    
 }

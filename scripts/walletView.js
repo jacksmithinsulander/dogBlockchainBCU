@@ -9,9 +9,7 @@ export default function walletView () {
         userId = userId.toString();
     }
     const walletDiv = document.createElement("div");
-
-
-
+    walletDiv.id = "cardDiv";
 
     let ownedDogs = [];
     blockArray.timeSheet.map((block) => {
@@ -64,12 +62,12 @@ export default function walletView () {
     console.log(ownedDogs);
     
     for (let i = 0; i < ownedDogs.length; i++) {
-        const dogDiv = document.createElement("div");
+        var dogDiv = document.createElement("div");
         dogDiv.id = `dogDiv${i}`;
         dogDiv.className += "dogDiv";
 
         dogDiv.innerHTML = 
-        `<img id = "dogWalletImg" src="${ownedDogs[i].data.dogImage}" alt="din hund"> </br>
+        `<div id="dogImageBox"><img id = "doggyImage" src="${ownedDogs[i].data.dogImage}" alt="din hund"></div> </br>
         <div id = "dogCardContainer">
         <h2>${ownedDogs[i].data.dogName}</h2> 
         <h4>XP: ${ownedDogs[i].data.dogXP}</h4> 
