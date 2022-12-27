@@ -71,9 +71,9 @@ export default function walletView () {
         dogDiv.innerHTML = 
         `<img id = "dogWalletImg" src="${ownedDogs[i].data.dogImage}" alt="din hund"> </br>
         <div id = "dogCardContainer">
-        <h2>${ownedDogs[i].data.dogName}</h2> 
-        <h4>XP: ${ownedDogs[i].data.dogXP}</h4> 
-        <p>Dog State: ${ownedDogs[i].data.dogState}</p> </div>` ;
+        <h2 id = "dogWalletName">${ownedDogs[i].data.dogName}</h2> 
+        <h4 id = "dogWalletXp">XP: ${ownedDogs[i].data.dogXP}</h4> 
+        <p id = "dogWalletState">Dog State: ${ownedDogs[i].data.dogState}</p> </div>` ;
 
         const gymButton = document.createElement("button");
         gymButton.id = `gymBtn${i}`;

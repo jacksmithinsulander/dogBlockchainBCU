@@ -28,27 +28,27 @@ export default function printBlockChain() {
             'blockchainObjectArr'));
         blockArray.timeSheet.map(work => {
             let timeBox = document.createElement("div");
-            timeBox.style.border = "3px solid magenta";
             timeBox.style.padding = "20px";
             timeBox.style.margin = "20px";
-            timeBox.style.backgroundColor = "cyan"
-            timeBox.style.borderRadius = "10px"
+            timeBox.style.borderRadius = "10px";
+            timeBox.style.boxShadow = "0 4px 8px 0 rgba(0,0,0,0.2)";
             timeBox.id = work.id;
             timeBox.id = "blockBoxar";
             if (work.data.dogName === "Genesis") {
                 timeBox.innerHTML = "<p> Genesis block </p>"
             } else {
-                timeBox.innerHTML = "<p> Previous Hash: " + work
-                    .prevHash + "</br> Event: " + work.event + "<br/> Dogbreed: " + work.data
-                    .dogBreed + "</br> Dogs Name: " + work.data
-                    .dogName + "<br> Dogs XP: " + work.data.dogXP +
-                    "<br> Owner of dog: " + work.data.dogsOwner +
-                    "<br> Dog is: " + work.data.dogState +
-                    "<br> Dog Image URL: " + work.data.dogImage +
-                    "<br> Timestamp: " + work.data.timeStamp +
-                    "</br> Hash: " + work.hash +
-                    "</p> <br> <div id='dogImageBox'> <img id='doggyImage' src='" + work.data.dogImage +
-                    "' style='object-fit:contain;'> </div>"
+                timeBox.innerHTML = "<p id = 'explorerText'> Previous Hash: " + work.prevHash + "<br>"
+                + "<br> Hash: " + work.hash + "<br>"
+                + "<br> Timestamp: " + work.data.timeStamp  + "<br>"
+                + "<br> Event: " + work.event + "<br>"
+                + "<br> Dogs Name: " + work.data.dogName + "<br>"
+                + "<br> Dogbreed: " + work.data.dogBreed + "<br>"
+                + "<br> Owner of dog: " + work.data.dogsOwner + "<br>"
+                + "<br> Dog is: " + work.data.dogState + "<br>"
+                + "<br> Dogs XP: " + work.data.dogXP + "<br>"
+                + "<br> Dog Image URL: " + work.data.dogImage  
+                + "</p> <br> <div id='dogImageBox'> <img id='doggyImage' src='" + work.data.dogImage 
+                + "' style='object-fit:contain;'> </div>"
             }
             blockExplorer.appendChild(timeBox);
         })
