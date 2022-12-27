@@ -323,7 +323,7 @@ body {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
-  width: auto;
+  width: 500px;
   padding: 5em;
   margin: 10em;
   border: 1px solid rgb(21, 178, 229);
@@ -353,6 +353,7 @@ body {
 
 #dogWalletImg {
   border-radius: 5px 5px 0 0;
+  width: 400px;
 }
 
 #dogCardContainer {
