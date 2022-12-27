@@ -36,7 +36,7 @@ export default function walletView () {
     console.log(duplicateElements);
 
     // mappar genom alla ID (kanske bara ska mappa dublettID)
-    ownedDogsIdArray.map((id) => {
+    duplicateElements.map((id) => {
         let dogsWithId = [];
         // Hittar alla hundar med dublett ID
         ownedDogs.map((dog) => {
@@ -45,19 +45,20 @@ export default function walletView () {
                 dogsWithId.push(dog);
             }
         });
-        //console.log(dogsWithId.pop())
         console.log(dogsWithId);
         dogsWithId.pop(); // poppar bort hunden vi vill behalla 
-        console.log(dogsWithId);
+        //console.log(dogsWithId);
         // ta bort hundar fran Owned dogs med samma Index som dogsWithID
         dogsWithId.map((dog) => {
             let dogIndex = dog.index;
-            console.log(dog.index);
+            //console.log(dog.index);
             let duplicateDog = ownedDogs.find(x => x.index === dogIndex);
             let indexInOwnedDogs = ownedDogs.indexOf(duplicateDog);
             console.log(indexInOwnedDogs);
-            console.log(ownedDogs);
-            ownedDogs.splice(indexInOwnedDogs);
+            //console.log(ownedDogs);
+            if (indexInOwnedDogs > -1) {
+                ownedDogs.splice(indexInOwnedDogs, 1);
+            }
         });
     });
     console.log(ownedDogs);
