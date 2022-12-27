@@ -15,7 +15,8 @@ export default function dogGym(dogData) {
             dogImage: dogData.dogImage,
             dogXP: "Leveling....",
             dogsOwner: dogData.dogsOwner,
-            dogState: "At Gym!"
+            dogState: "At Gym!",
+            id: dogData.id
         }
     } else {
         var dogEvent = "Take home";
@@ -27,9 +28,11 @@ export default function dogGym(dogData) {
             dogImage: dogData.dogImage,
             dogXP: newDogXP,
             dogsOwner: dogData.dogsOwner,
-            dogState: "With owner"
+            dogState: "With owner",
+            id: dogData.id
         }
     }
+    console.log(dogData.id);
     blockArray.addTime(new Block(newDogData, dogEvent));
         setTimeout(() => {
             localStorage.setItem("blockchainObjectArr", JSON

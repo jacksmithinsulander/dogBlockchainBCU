@@ -1,7 +1,9 @@
+import Chain from "./chain.js";
+
 export default class Block {
-    static nextIndex = 0;
-    constructor(data, event, prevHash = "") {
-        this.index = Block.nextIndex++;
+
+    constructor(data, event, id, prevHash = "") {
+        this.index = this.getIndex();
         this.data = data;
         //this.timestamp = Date.now();
         this.event = event; 
@@ -30,5 +32,13 @@ export default class Block {
         }
         this.hash = tryHash;
         //this.index++;
+    }
+    getIndex() {
+        if (!(localStorage.getItem('blockchainObjectArr'))) {
+            return 0;
+        } else {
+            let blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
+            return blockArray.timeSheet.length;
+        }
     }
 }

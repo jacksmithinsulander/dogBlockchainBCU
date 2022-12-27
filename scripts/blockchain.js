@@ -23,10 +23,11 @@ export default function blockchain() {
     if (!(localStorage.getItem('blockchainObjectArr'))) {
         var blockArray = new Chain();
         localStorage.setItem('blockchainObjectArr', JSON.stringify(blockArray));
+        console.log("has chain");
     } else {
-        var blockArray = JSON.parse(localStorage.getItem(
-        'blockchainObjectArr'));
+        var blockArray = JSON.parse(localStorage.getItem('blockchainObjectArr'));
         blockArray = new ChainGet(blockArray);
+        console.log("created chain");
     }
     fetch('https://dog.ceo/api/breeds/list/all').then(response => response
     .json()).then(data => {
@@ -73,7 +74,8 @@ export default function blockchain() {
                 dogImage: dogImg,
                 dogXP: 0,
                 dogsOwner: dogOwner,
-                dogState: "With owner"
+                dogState: "With owner",
+                id: self.crypto.randomUUID()
             }
             blockArray.addTime(new Block(blockData, dogEvent));
             setTimeout(() => {

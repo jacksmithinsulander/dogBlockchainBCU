@@ -11,14 +11,56 @@ export default function walletView () {
     const walletDiv = document.createElement("div");
 
 
+
+
     let ownedDogs = [];
     blockArray.timeSheet.map((block) => {
         //console.log(block.data.dogsOwner);
         if(block.data.dogsOwner === userId) {
+            // leta efter dubletter och lagg bara till det med hogsta index     
             //console.log(block);
             ownedDogs.push(block);
         }
-    })
+    });
+
+    // Array med alla ID i owned dogs
+    let ownedDogsIdArray = [];
+    ownedDogs.map((block) => {
+        ownedDogsIdArray.push(block.data.id);
+    });
+    console.log(ownedDogsIdArray);
+
+    // Hittar dubletter och lagger ID med dubletter i array
+    const toFindDuplicates = ownedDogsIdArray => ownedDogsIdArray.filter((item, index) => ownedDogsIdArray.indexOf(item) !== index)
+    const duplicateElements = toFindDuplicates(ownedDogsIdArray);
+    console.log(duplicateElements);
+
+    // mappar genom alla ID (kanske bara ska mappa dublettID)
+    ownedDogsIdArray.map((id) => {
+        let dogsWithId = [];
+        // Hittar alla hundar med dublett ID
+        ownedDogs.map((dog) => {
+            if (dog.data.id === id) {
+                //hundar med ID
+                dogsWithId.push(dog);
+            }
+        });
+        //console.log(dogsWithId.pop())
+        console.log(dogsWithId);
+        dogsWithId.pop(); // poppar bort hunden vi vill behalla 
+        console.log(dogsWithId);
+        // ta bort hundar fran Owned dogs med samma Index som dogsWithID
+        dogsWithId.map((dog) => {
+            let dogIndex = dog.index;
+            console.log(dog.index);
+            let duplicateDog = ownedDogs.find(x => x.index === dogIndex);
+            let indexInOwnedDogs = ownedDogs.indexOf(duplicateDog);
+            console.log(indexInOwnedDogs);
+            console.log(ownedDogs);
+            ownedDogs.splice(indexInOwnedDogs);
+        });
+    });
+    console.log(ownedDogs);
     
     for (let i = 0; i < ownedDogs.length; i++) {
         const dogDiv = document.createElement("div");

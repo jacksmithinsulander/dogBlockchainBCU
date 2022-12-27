@@ -39,7 +39,7 @@ export default function printBlockChain() {
                 timeBox.innerHTML = "<p> Genesis block </p>"
             } else {
                 timeBox.innerHTML = "<p> Previous Hash: " + work
-                    .prevHash + "<br/> Dogbreed: " + work.data
+                    .prevHash + "</br> Event: " + work.event + "<br/> Dogbreed: " + work.data
                     .dogBreed + "<br/> Dogs Name: " + work.data
                     .dogName + "<br> Dogs XP: " + work.data.dogXP +
                     "<br> Owner of dog: " + work.data.dogsOwner +
