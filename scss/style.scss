@@ -113,7 +113,7 @@ body{
     position: absolute;
     align-self: center;
     margin-right: 200px;
-    top: 0px;
+    top: -100px;
     font-size: 25vh;
     /* font-size: 15vh; Mobilstorlek*/
     font-family: Squabslab;
@@ -143,7 +143,7 @@ h3{
 
 #inputUserName, #labelUsername, #labelPassword, #inputPassword{
     position: relative;
-    top:300px;
+    top:400px;
     width: 250px;
     margin-top: 10px;
 }
@@ -160,7 +160,7 @@ h3{
 
 #logInBtn{
     position: relative;
-    top: 300px;
+    top: 400px;
     margin-top: 10px;
 }
 
@@ -246,7 +246,7 @@ h3{
     position: relative;
     width: 300px;
     height: 50px;
-    top: 300px;
+    top: 400px;
     align-self: center;
     background-image: linear-gradient(to bottom right, #424d63, #5e93fd);
     font-family: Squabslab;
@@ -280,9 +280,9 @@ h3{
 
 #pug{
     position: absolute;
-    width: 470px;
+    width: 700px;
     align-self: flex-end;
-    top: 16px;
+    top: 5px;
     z-index: -1;
     border: none;
 }
@@ -291,7 +291,7 @@ h3{
     width: 800px;
     position: absolute;
     border: none;
-    top:-4px;
+    top: 20px;
     align-self: flex-start;
     z-index: -1;
 }
