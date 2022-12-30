@@ -52,7 +52,6 @@ export default function logIn() {
         let users = JSON.parse(localStorage.getItem("users"));
 
         function findAUser() {
-            console.log(users.users.length);
             for (let i = 0; i < users.users.length; i++) {
                 let checkObject = new User(inputUserName.value,
                     inputPassword.value);
@@ -61,10 +60,8 @@ export default function logIn() {
                 function testPassword() {
                     if (users.users[i].password === checkObject
                         .password) {
-                        console.log("OKKKK", users.users[i].name);
                         localStorage.setItem("userId", inputUserName.value);
 
-                        console.log(users.users[i].name);
                         content.innerHTML = "";
                         blockchain();
                     } else {

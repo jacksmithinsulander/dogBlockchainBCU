@@ -6,9 +6,6 @@ import blockchain from "./blockchain.js";
 if (!localStorage.getItem("users")) {
     let users = new UserList();
     localStorage.setItem("users", JSON.stringify(users));
-    console.log("we have ls");
-} else {
-    console.log("ls already exists");
 }
 if (localStorage.getItem("userId")) {
     blockchainView();

@@ -2,7 +2,6 @@ export default class BlockGet {
     constructor(data) {
         this.index = data.index;
         this.data = data.data;
-        console.log(data.data);
         this.event = data.event;
         this.id = data.id;
         //this.timestamp = data.timestamp;

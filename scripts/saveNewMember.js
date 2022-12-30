@@ -46,9 +46,7 @@ export default function saveNewMember() {
         if (!localStorage.getItem("users")) {
             users = [];
             localStorage.setItem("users", users);
-            console.log('User list added to ls')
         } else {
-            console.log("user list already present in ls")
             users = JSON.parse(localStorage.getItem("users"));
         }
         let newUser = new User(inputCreateUserName.value,

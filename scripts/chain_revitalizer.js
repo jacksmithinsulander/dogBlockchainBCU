@@ -3,7 +3,6 @@ export default class chainGet {
     constructor(oldChain) {
         this.timeSheet = this.remakeBlocks(oldChain);
         this.difficulty = 3;
-        console.log(this.timeSheet);
     }
     remakeBlocks(blockArray) {
         let tempTimesheet = [];
@@ -21,7 +20,6 @@ export default class chainGet {
         // FÅNGA OCH PUSHA IN NYA TIDER
         // SPARA ÄVEN TIDIGARE HASH
         newTime.prevHash = this.getLatestTime().hash;
-        console.log(this.getLatestTime().hash);
         // MAJNA
         newTime.mineBlock(this.difficulty);
         // HASHA

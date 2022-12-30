@@ -10,7 +10,6 @@ export default class Block {
         this.prevHash = prevHash;
         this.hash = this.calculateHash().then(data => this.hash = data);
         this.nonce = 0;
-        console.log(this);
     }
     async calculateHash() {
         // RÄKNA UT BLOCKETS HASH
