@@ -1,9 +1,9 @@
-import pug from "./pictures.js";
+import pugBackground from "./pugBackground.js";
 import logIn from "./logIn.js";
 import User from "./user.js";
 
 export default function saveNewMember() {
-    pug();
+    pugBackground();
     let headline = document.createElement("h1");
     headline.id = "newMemberHeadline"; 
     headline.innerText = "NEW MEMBER";

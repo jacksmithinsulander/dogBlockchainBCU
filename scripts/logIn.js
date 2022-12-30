@@ -1,15 +1,14 @@
-import blockchainView from "./blockchainView.js";
-import pug from "./pictures.js";
 import saveNewMember from "./saveNewMember.js";
 import User from "./user.js";
 import blockchain from "./blockchain.js";
 import headerMenuMaker from "./headerMenuMaker.js";
+import pugBackground from "./pugBackground.js";
 
 export default function logIn() {
     header.innerHTML = "";
     content.innderHTML = "";
     headerMenuMaker();
-    pug();
+    pugBackground();
     let headline = document.createElement("h1");
     headline.id = "pupster";
     headline.innerText = "PUPSTER";
@@ -44,10 +43,12 @@ export default function logIn() {
     newMember.innerText = "New Member?";
     newMember.id = "newMember";
     content.appendChild(newMember);
+
     newMember.addEventListener("click", () => {
         content.innerHTML = "";
         saveNewMember();
     })
+    
     logInBtn.addEventListener("click", async () => {
         let users = JSON.parse(localStorage.getItem("users"));
 

@@ -1,4 +1,4 @@
-export default function pug(){
+export default function pugBackground(){
      // PUG PICTURE
      let img = document.createElement("img");
      img.src = "pexels-charles-1851164.jpg";

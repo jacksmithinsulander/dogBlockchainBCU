@@ -4,7 +4,6 @@ export default class BlockGet {
         this.data = data.data;
         this.event = data.event;
         this.id = data.id;
-        //this.timestamp = data.timestamp;
         this.prevHash = data.prevHash;
         this.hash = data.hash;
         this.nonce = data.nonce;

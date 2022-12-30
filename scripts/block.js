@@ -1,11 +1,8 @@
-import Chain from "./chain.js";
-
 export default class Block {
 
-    constructor(data, event, id, prevHash = "") {
+    constructor(data, event, prevHash = "") {
         this.index = this.getIndex();
         this.data = data;
-        //this.timestamp = Date.now();
         this.event = event; 
         this.prevHash = prevHash;
         this.hash = this.calculateHash().then(data => this.hash = data);
@@ -30,7 +27,6 @@ export default class Block {
             tryHash = await this.calculateHash(this.nonce);
         }
         this.hash = tryHash;
-        //this.index++;
     }
     getIndex() {
         if (!(localStorage.getItem('blockchainObjectArr'))) {

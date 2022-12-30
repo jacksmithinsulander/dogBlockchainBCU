@@ -13,10 +13,8 @@ export default function walletView () {
 
     let ownedDogs = [];
     blockArray.timeSheet.map((block) => {
-        //console.log(block.data.dogsOwner);
         if(block.data.dogsOwner === userId) {
             // leta efter dubletter och lagg bara till det med hogsta index     
-            //console.log(block);
             ownedDogs.push(block);
         }
     });
@@ -26,12 +24,10 @@ export default function walletView () {
     ownedDogs.map((block) => {
         ownedDogsIdArray.push(block.data.id);
     });
-    console.log(ownedDogsIdArray);
 
     // Hittar dubletter och lagger ID med dubletter i array
     const toFindDuplicates = ownedDogsIdArray => ownedDogsIdArray.filter((item, index) => ownedDogsIdArray.indexOf(item) !== index)
     const duplicateElements = toFindDuplicates(ownedDogsIdArray);
-    console.log(duplicateElements);
 
     // mappar genom alla ID (kanske bara ska mappa dublettID)
     duplicateElements.map((id) => {
@@ -43,23 +39,17 @@ export default function walletView () {
                 dogsWithId.push(dog);
             }
         });
-        console.log(dogsWithId);
         dogsWithId.pop(); // poppar bort hunden vi vill behalla 
-        //console.log(dogsWithId);
         // ta bort hundar fran Owned dogs med samma Index som dogsWithID
         dogsWithId.map((dog) => {
             let dogIndex = dog.index;
-            //console.log(dog.index);
             let duplicateDog = ownedDogs.find(x => x.index === dogIndex);
             let indexInOwnedDogs = ownedDogs.indexOf(duplicateDog);
-            console.log(indexInOwnedDogs);
-            //console.log(ownedDogs);
             if (indexInOwnedDogs > -1) {
                 ownedDogs.splice(indexInOwnedDogs, 1);
             }
         });
     });
-    console.log(ownedDogs);
     
     for (let i = 0; i < ownedDogs.length; i++) {
         var dogDiv = document.createElement("div");

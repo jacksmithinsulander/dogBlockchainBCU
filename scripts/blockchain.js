@@ -20,6 +20,7 @@ export default function blockchain() {
     buyBtn.id = "buyBtn";
     content.appendChild(buyBtn);
     buyBtn.innerHTML = "Buy dog";
+    
     var dogsArray = [];
     if (!(localStorage.getItem('blockchainObjectArr'))) {
         var blockArray = new Chain();
